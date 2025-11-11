@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <fieldset>
+        <legend>납품자 정보</legend>
+        <ol>
+            <li>납품자명 : <input type="name" placeholder="이름" ></li>
+            <li>email : <input type="email" placeholder="ex@naver.com"></li>     
+            <li>홈페이지: <input type="url" value="http://"></li>
+        </ol>
+    </fieldset>
+
+    <fieldset>
+        <legend>납품 정보</legend>
+        <ul>
+            <li>상품명 : <input type="text"></li>
+            <li>납품수량 : <input type="text"></li>
+            <!--<li> 등급 : <input type="range" name="score" min="0" max="100"</li>-->
+            <li>등급 : <input type="range" name="score" min="0" max="100"></li>
+            <li>기타사항 : <input type="text"></li>
+        </ul>
+    </fieldset>
+
+    <br><br>
+
+    <input type="submit" value="전송하기">
+
+    <hr>
+
+    <h4>피자 주문</h4>
+
+    고객명: <input type="text"> <br>
+    전화번호: <input type="text"> <br>
+    이메일: <input type="email"> <br>
+     
+    <fieldset>
+        <legend>피자 사이즈</legend>
+        <input type="radio" name="pizza" id="s" value="small"><label for="x">small</label>
+        <input type="radio" name="pizza" id="m" value="medium"><label for="x">medium</label>
+        <input type="radio" name="pizza" id="l" value="large"><label for="x">large</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>토핑 선택</legend>
+        <input type="checkbox" name="topping" value="bacon" id="element"><label for="topping">bacon</label>
+        <input type="checkbox" name="topping" value="cheese" id="element"><label for="topping">cheese</label>
+        <input type="checkbox" name="topping" value="onion" id="element"><label for="topping">onion</label>
+        <input type="checkbox" name="topping" value="mushroom" id="element"><label for="topping">mushroom</label>
+    </fieldset>
+
+    희망 배송 시간 : <input type="time" name="timeIn" id=""> <br>
+
+    배송시 요청 사항
+    <form action="test">
+
+        <textarea name="content" cols="30" rows="10" style="resize:none" ></textarea> <!--단일 태그가 아니라 value로 못넣음-->
+        <!-- textarea name="content" cols="30" rows="10" style="resize:none"></textarea>-->
+    </form>
+
+    <input type="submit" value="주문하기">
+
+
+    <fieldset>
+        <legend>회원 가입 동의서</legend> 
+        <h4>이용 약관 동의(필수)</h4>
+
+        <textarea name="content" cols="30" rows="10" style="resize:none" disabled>대법원장과 대법관이 아닌 법관의 임기는 10년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다. 국가는 모성의 보호를 위하여 노력하여야 한다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 누구든지 체포 또는 구속을 당한 때에는 적부의 심사를 법원에 청구할 권리를 가진다.
+
+        농업생산성의 제고와 농지의 합리적인 이용을 위하거나 불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는 바에 의하여 인정된다. 법관이 중대한 심신상의 장해로 직무를 수행할 수 없을 때에는 법률이 정하는 바에 의하여 퇴직하게 할 수 있다. 국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다.</textarea>
+        <br>
+        <input type="radio" name="answer" id="y" value="yes"><label for ="y">동의합니다.</label>
+        <input type="radio" name="answer" id="n" value="no" checked><label for="n">동의하지 않습니다.</label>
+
+        <br> <br>
+
+        <h4>개인정보 수집 및 이용 동의</h4>
+
+        <textarea name="content" cols="30" rows="10" style="resize:none" disabled>대법원장과 대법관이 아닌 법관의 임기는 10년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다. 국가는 모성의 보호를 위하여 노력하여야 한다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 누구든지 체포 또는 구속을 당한 때에는 적부의 심사를 법원에 청구할 권리를 가진다.
+
+        농업생산성의 제고와 농지의 합리적인 이용을 위하거나 불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는 바에 의하여 인정된다. 법관이 중대한 심신상의 장해로 직무를 수행할 수 없을 때에는 법률이 정하는 바에 의하여 퇴직하게 할 수 있다. 국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다.</textarea>
+
+        <br>
+
+        <input type="radio" name="answer1" id="y" value="yess"><label for ="yy">동의합니다.</label>
+        <input type="radio" name="answer1" id="n" value="noo" checked><label for="nn">동의하지 않습니다.</label>
+
+        <br><br>
+        <input type="checkbox" name="answer2" value="동의"><label for ="yyy">모두 동의합니다.</label> 
+
+        <br><br>
+
+        <input type="submit" value="취소">
+        <input type="submit" value="확인">
+    </fieldset>
+
+    <fieldset>
+        <legend>회원가입 양식</legend>
+        *아이디<input type="text" placeholder="영문,소문자,특수기호">
+        <input type="submit" value="아이디 중복확인">
+        <br>
+        
+        *비밀번호<input type="text" placeholder="영문,소문자,숫자,특수문자 8~15">
+        
+        <br>
+        
+        *비밀번호 재확인<input type="text" placeholder="영문,소문자,숫자,특수문자 8~15">
+         
+        <br>
+        *이름<input type="text"> 
+        <br>
+        *주민등록번호<input type="text">-<input type="text">
+        <br>
+        <input type="radio" name="answer3" id="x" value="x" checked><label for="x">선택안함</label>
+        <input type="radio" name="answer3" id="m" value="m"><label for="x">남자</label>
+        <input type="radio" name="answer3" id="f" value="f"><label for="x">여자</label> <br>
+        *생년월일
+        <input type="date" name="dateIn" id=""> 
+        <br>
+        주소
+        <br>
+        <input type="text" name="주소">
+        <br>
+        우편번호
+        <br>
+        <input type="text" name="우편번호">
+        <input type="submit" value="우편번호찾기">
+        <input type="checkbox" name="answer"> 우편 수신 동의
+        <br> <br>
+        이메일 <input type="checkbox" name="answer">이메일 수신 동의
+
+        <br> <br>
+        휴대폰 번호
+        <br>
+   
+        <!--
+        <select name="telecom" id="">
+            <option>선택</option>
+            <option value="skt">SKT</option>
+            <option value="kt">KT</option>
+            <option value="lg" selected>LG</option>
+        </select>
+        -->
+
+        <select name="cellphone" id="">
+            <option>선택</option>
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="016">016</option>
+        </select>
+        -<input type="text" >-<input type="text">
+        <input type="checkbox" name="answer">문자 수신 동의
+
+        <br>
+        <br>
+
+        <input type="submit" value="초기화">
+        <input type="submit" value="가입하기">
+
+    </fieldset>
+    
+
+
+
+
+    
+ 
+</body>
+</html>

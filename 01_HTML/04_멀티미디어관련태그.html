@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멀티 미디어 관련 태그</title>
+</head>
+<body>
+    <h2>이미지 멀티 미디어 태그</h2>
+    <h3>이미지 src 속성 alt 속성</h3>
+
+    <!--
+      img의 태그 속성
+      src : 이미지 경로
+      alt : 이미지 설명 문구
+      width/height : 크기 지정(px)
+    -->
+
+    <img src="resources/다운로드.jfif" alt="푸들">
+
+    <!--
+      alt : 이미지 파일에 대하 설명으로 파일이 손상되었거나 경로가 잘못되어 이미지가
+      나올 수 없을 때 대신 보여주는 메시지(스크린 리더가 읽어주는 메시지)
+    -->
+
+    <h3>width / height 속성</h3>
+    <p>
+        이미지 가로 세로 길이를 조절할 수 있는 속성 <br>
+        고정길이 px 가변길이 % 조절 가능
+    </p>
+
+    <h4>고정길이 (px) : 기본값으로 화면 사이즈가 변경되어도 크기는 고정</h4>
+
+    <img src="resources/강아지.jfif" width="150" height="150">
+    <img src="resources/강아지2.jfif" width="200" height="200">
+
+    <hr>
+
+    <h4>가변길이 (%) : 화면 사이즈에 따라서 크기가 변경된다</h4>
+    <img src="resources/강아지.jfif" width="30%" height="30%">
+    <img src="resources/강아지2.jfif" width="50%" height="50%">
+
+    <h3>오디오 관련 태그</h3>
+    <!--
+      <audio src=""></audio> 태그의 속성
+      src : 경로
+      autoplay : 자동재생
+      loop : 반복재생
+      controls : 컨트롤러 표시 
+    -->
+
+    <audio src="resources/sample.MP3" autoplay loop controls></audio>
+
+    <h3>비디오 관련 태그</h3>
+
+    <!--
+     <video src = ""></video>
+     width, height : 크기 지정
+     poster : 썸네일
+     autoplay : 자동재생
+     loop : 반복재생
+     controls : 컨트롤러
+    -->
+
+    <video src="resources/video1.mp4" poster="resources/강아지.jfif" autoplay loop controls></video>
+
+    <a href="00_목차.html">목차로..</a>
+</body>
+</html>

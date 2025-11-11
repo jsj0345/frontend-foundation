@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="test">
+        <fieldset>
+            <legend>납품자 정보</legend>
+
+            <ol>
+                <li>납품자명: <input type="text" name="buy_name" placeholder="이름"></li>
+                <li>email: <input type="email" name="email" placeholder="ex@naver.com"></li>
+                <li>홈페이지: <input type="text" name="homepage" value="http://"></li>
+            </ol>
+        </fieldset>
+    
+
+    
+        <fieldset>
+            <legend>납품 정보</legend>
+            <ul>
+                <li>상품명: <input type="text" name="goods"></li>
+                <li>납품수량: <input type="number" name="stock"></li>
+                <li>등급: <input type="range" name="grade" min="0" max="100"></li>
+                <li>기타사항: <textarea name="content" cols="30" rows="10" style="resize:none"></textarea></li>
+            </ul>
+        </fieldset>
+
+        <br><br>
+
+        <input type="submit" value="전송하기">
+    </form>
+
+    <hr>
+
+    <form action="test">
+        <h3>피자 주문</h3>
+
+        
+
+        고객명: <input type="text" name="customer_name" id="cn"><label for="cn"></label> <br>
+        전화번호: <input type="text" name="phone_number" id="pn"><label for="pn"></label> <br>
+        이메일: <input type="email" name="email" id="em"><label for="em"></label> <br>
+
+        <fieldset>
+            <legend>피자 사이즈</legend>
+            <input type="radio" name="size" id="small" value="small"><label for="small">small</label>
+            <input type="radio" name="size" id="medium" value="medium"><label for="medium">medium</label>
+            <input type="radio" name="size" id="large" value="large"><label for="large">large</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>토핑 선택</legend>
+
+            <input type="checkbox" name="topping" id="bacon" value="bacon"><label for="bacon">bacon</label>
+            <input type="checkbox" name="topping" id="cheese" value="cheese"><label for="cheese">cheese</label>
+            <input type="checkbox" name="topping" id="onion" value="onion"><label for="onion">onion</label>
+            <input type="checkbox" name="topping" id="mushroom" value="mushroom"><label for="mushroom">mushroom</label>
+        </fieldset>
+
+        <br>
+        희망 배송 시간: <input type="time" name="time"> <br>
+        배송시 요청 사항 <br>
+        <textarea name="require_comment" id="require" cols="20" rows="10"></textarea> <br>
+
+        <input type="submit" value="주문하기">
+    </form>
+
+    <form action="test">
+        <fieldset>
+            <legend>회원 가입 동의서</legend>
+
+            이용 약관 동의(필수) <br>
+
+            <textarea name="agreement1" id="agreement1" rows="30" cols="50" disabled>
+                법관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니하며, 징계처분에 의하지 아니하고는 정직·감봉 기타 불리한 처분을 받지 아니한다.
+                국회는 헌법 또는 법률에 특별한 규정이 없는 한 재적의원 과반수의 출석과 출석의원 과반수의 찬성으로 의결한다. 가부동수인 때에는 부결된 것으로 본다.
+                피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다.
+                모든 국민은 행위시의 법률에 의하여 범죄를 구성하지 아니하는 행위로 소추되지 아니하며, 동일한 범죄에 대하여 거듭 처벌받지 아니한다. 각급 선거관리위원회의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
+                법률은 특별한 규정이 없는 한 공포한 날로부터 20일을 경과함으로써 효력을 발생한다. 모든 국민의 재산권은 보장된다. 그 내용과 한계는 법률로 정한다.
+                모든 국민은 언론·출판의 자유와 집회·결사의 자유를 가진다. 국회는 국가의 예산안을 심의·확정한다. 국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
+                공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 정기회의 회기는 100일을, 임시회의 회기는 30일을 초과할 수 없다. 국회는 선전포고, 국군의 외국에의 파견 또는 외국군대의 대한민국 영역안에서의 주류에 대한 동의권을 가진다.
+                국회의원은 법률이 정하는 직을 겸할 수 없다. 국회의원과 정부는 법률안을 제출할 수 있다. 국회는 국민의 보통·평등·직접·비밀선거에 의하여 선출된 국회의원으로 구성한다.
+                외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 광물 기타 중요한 지하자원·수산자원·수력과 경제상 이용할 수 있는 자연력은 법률이 정하는 바에 의하여 일정한 기간 그 채취·개발 또는 이용을 특허할 수 있다.
+                모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다. 군인·군무원·경찰공무원 기타 법률이 정하는 자가 전투·훈련등 직무집행과 관련하여 받은 손해에 대하여는 법률이 정하는 보상외에 국가 또는 공공단체에 공무원의 직무상 불법행위로 인한 배상은 청구할 수 없다.
+                지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다. 대통령은 내우·외환·천재·지변 또는 중대한 재정·경제상의 위기에 있어서 국가의 안전보장 또는 공공의 안녕질서를 유지하기 위하여 긴급한 조치가 필요하고 국회의 집회를 기다릴 여유가 없을 때에 한하여 최소한으로 필요한 재정·경제상의 처분을 하거나 이에 관하여 법률의 효력을 가지는 명령을 발할 수 있다.               
+            </textarea> 
+
+            <br>
+            <input type="radio" name="answer1" id="answer1" value="동의합니다."><label for="answer1">동의합니다.</label>
+            <input type="radio" name="answer1" id="answer2" value="동의하지 않습니다."><label for="answer2">동의하지 않습니다.</label> <br><br>
+
+            
+
+            개인정보 수집 및 이용 동의(필수) <br>
+            <textarea name="agreement2" id="agreement2" rows="30" cols="50" disabled>
+                법관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니하며, 징계처분에 의하지 아니하고는 정직·감봉 기타 불리한 처분을 받지 아니한다.
+                국회는 헌법 또는 법률에 특별한 규정이 없는 한 재적의원 과반수의 출석과 출석의원 과반수의 찬성으로 의결한다. 가부동수인 때에는 부결된 것으로 본다.
+                피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다.
+                모든 국민은 행위시의 법률에 의하여 범죄를 구성하지 아니하는 행위로 소추되지 아니하며, 동일한 범죄에 대하여 거듭 처벌받지 아니한다. 각급 선거관리위원회의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
+                법률은 특별한 규정이 없는 한 공포한 날로부터 20일을 경과함으로써 효력을 발생한다. 모든 국민의 재산권은 보장된다. 그 내용과 한계는 법률로 정한다.
+                모든 국민은 언론·출판의 자유와 집회·결사의 자유를 가진다. 국회는 국가의 예산안을 심의·확정한다. 국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
+                공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 정기회의 회기는 100일을, 임시회의 회기는 30일을 초과할 수 없다. 국회는 선전포고, 국군의 외국에의 파견 또는 외국군대의 대한민국 영역안에서의 주류에 대한 동의권을 가진다.
+                국회의원은 법률이 정하는 직을 겸할 수 없다. 국회의원과 정부는 법률안을 제출할 수 있다. 국회는 국민의 보통·평등·직접·비밀선거에 의하여 선출된 국회의원으로 구성한다.
+                외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 광물 기타 중요한 지하자원·수산자원·수력과 경제상 이용할 수 있는 자연력은 법률이 정하는 바에 의하여 일정한 기간 그 채취·개발 또는 이용을 특허할 수 있다.
+                모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다. 군인·군무원·경찰공무원 기타 법률이 정하는 자가 전투·훈련등 직무집행과 관련하여 받은 손해에 대하여는 법률이 정하는 보상외에 국가 또는 공공단체에 공무원의 직무상 불법행위로 인한 배상은 청구할 수 없다.
+                지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다. 대통령은 내우·외환·천재·지변 또는 중대한 재정·경제상의 위기에 있어서 국가의 안전보장 또는 공공의 안녕질서를 유지하기 위하여 긴급한 조치가 필요하고 국회의 집회를 기다릴 여유가 없을 때에 한하여 최소한으로 필요한 재정·경제상의 처분을 하거나 이에 관하여 법률의 효력을 가지는 명령을 발할 수 있다.
+            </textarea>
+
+            <br>
+
+            <input type="radio" name="answer2" id="answer3" value="동의합니다."><label for="answer3">동의합니다.</label>
+            <input type="radio" name="answer2" id="answer4" value="동의하지 않습니다."><label for="answer4">동의하지 않습니다.</label>
+
+            <br><br>
+
+            <input type="checkbox" name="answer5" id="answer5" value="모두 동의합니다."><label for="answer5">모두 동의합니다.</label>
+
+            <br><br>
+
+            <input type="reset" value="취소"> <!--form에서 작성된 값들을 초기화하는 버튼-->
+            <!--input type="reset" value="취소"-->
+            <input type="submit" value="확인">
+        </fieldset>
+    </form>
+
+
+    <form action="test">
+
+        <fieldset>
+            <legend>회원가입 양식</legend>
+            *아이디<input type="text" name="id" placeholder="영문,소문자,특수기호">&nbsp;<input type="button" value="아이디 중복확인"> <br>
+            *비밀번호<input type="password" name="password" placeholder="영문,소문자,숫자,특수문자 8~15"> <br>
+            *비밀번호 재확인<input type="password" name="password" placeholder="영문,소문자,숫자,특수문자 8~15"> <br>
+            *이름<input type="text" name="name"> <br>
+            *주민등록번호<input type="text" name="personpassword">-<input type="password" name="personpassword"> <br>
+            <input type="radio" name="ppw" id="n" value="선택안함"><label for="n">선택안함</label> &nbsp;
+            <input type="radio" name="ppw" id="m" value="남자"><label for="m">남자</label> &nbsp;
+            <input type="radio" name="ppw" id="f" value="여자"><label for="f">여자</label> &nbsp; <br>
+            *생년월일 <br>
+            <input type="date" name="date" id="date1"><label for="date1"></label> <br>
+            주소 <br>
+            <input type="text" name="address"> <br>
+            우편번호 <br>
+            <input type="text" name="address1">&nbsp;<input type="button" value="우편번호"> <br>
+            <br>
+            <br>
+            
+            이메일  <input type="checkbox" name="emailanswer" value="이메일 수신 동의">이메일 수신 동의 <br>
+
+            <br>
+
+            휴대폰번호 <br>
+
+            <select name="phonefront" id="">
+                <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+            </select>
+            -<input name="phonenumber1" type="text" >-<input type="text" name="phonenumber2">
+
+            <br><br>
+
+            <input type="reset" value="초기화">
+            <input type="submit" value="가입하기">
+
+        </fieldset>
+
+
+    </form>
+    
+    
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
