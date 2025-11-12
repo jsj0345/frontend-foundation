@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 관련 스타일</title>
+
+    <!--여기 중요함!-->
+
+    <style>
+        .size-test{
+            border: 10px solid black;
+        }
+
+        #test1{
+            width: 400px;
+            height: 200px;
+        }
+
+        #test2{
+            width: 40%;
+            height: 150px;
+        }
+
+        .display-test{
+            border: 1px solid black;
+            width: 150px;
+            height: 150px;
+        }
+
+        .red{
+            background-color: red;
+        }
+
+        .oranged{
+            background-color: orange;
+        }
+
+        .yellow{
+            background-color: yellow;
+        }
+
+        .green{
+            background-color: green;
+        }
+
+        .blue{
+            background-color: blue;
+        }
+
+        .inline{
+            display: inline;
+            /*개발자도구 (f12)에서 display: block; 줄 그어져 있는거 확인해보기 */
+        }
+
+        .inline-block{
+            display: inline-block;
+        }
+
+        .block{
+            display: block;
+        }
+
+        .display-test > a{
+            background-color: burlywood;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+     
+        
+        .menu1 {
+            background-color: antiquewhite;
+            margin: 0px; 
+            padding-left:0px;
+        }
+        
+        .menu1>li {
+            border: 1px solid black;
+            margin: 0px 30px;
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+        }
+
+        .menu1>li>a {
+            width:100%; /*부모 요소를 따라 처리*/ 
+            height:100%;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .menu2 > a {
+            border: 1px solid salmon;
+            background-color: aqua;
+            display: block;
+            text-decoration: none;
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            color: black;
+            
+            line-height: 50px; /*수직 중앙 정렬*/
+        }
+
+        a:hover{
+            background-color: blanchedalmond;
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--
+      중요한 개념임!
+     
+      블럭요소 : 한줄 단위로 영역이 잡힌다. 줄바꿈 발생(div,p,pre,h....)
+      인라인 요소 : content 부분만 영역이 잡힌다. 옆으로 배치(span,label,input,...)
+    -->
+
+    <h1>레이아웃 관련 스타일</h1>
+    <h3>width,height</h3>
+    <p>
+        content영역(내용)의 크기를 조절하는 속성
+    </p>
+
+    <!--div#test$.size-test*2-->
+    <h4>고정크기 (px)</h4>
+    <div id="test1" class="size-test"></div>
+
+    <h4>가변크기 (%)</h4>
+    <div id="test2" class="size-test"></div>
+
+    <hr>
+
+    <h3>display : 화면 배치 방법 변경</h3>
+    <p>
+        블럭요소와 인라인 요소의 속성을 변경하여 배치 방식을 바꿀 수 있다.
+    </p>
+
+    <pre>
+        선택자{
+            display : inline/inline-block/block/none; -none을 하면 화면에 보여지지 않음.
+        }
+    </pre>
+
+    <!--기존 블럭 요소인 div를 인라인 요소로 변경해보기-->
+
+    <!--div.display-test{번째 영역}*5-->
+    <div class="display-test red">첫번째 영역</div>
+    <div class="display-test oranged">두번째 영역</div>
+    <div class="display-test yellow">세번째 영역</div>
+    <div class="display-test green">네번째 영역</div>
+    <div class="display-test blue">다섯번째 영역</div>
+
+    <br>
+    
+    <!--display : inline 확인해보기-->
+    <!--display : inline 설정시 줄바꿈 x width height 적용 불가-->
+    <div class="display-test inline red">첫번째 영역</div>
+    <div class="display-test inline oranged">두번째 영역</div>
+    <div class="display-test inline yellow">세번째 영역</div>
+    <div class="display-test inline green">네번째 영역</div>
+    <div class="display-test inline blue">다섯번째 영역</div>
+
+    <br><br>
+    <!--display:inline-block; 설정을 하면 width,height도 적용 가능-->
+    <div class="display-test inline-block red">첫번째 영역</div>
+    <div class="display-test inline-block oranged">두번째 영역</div>
+    <div class="display-test inline-block yellow">세번째 영역</div>
+    <div class="display-test inline-block green">네번째 영역</div>
+    <div class="display-test inline-block blue">다섯번째 영역</div>
+
+    <br><br>
+
+    <h4>display : block; - 인라인 요소를 블럭요소로</h4>
+    <span class="display-test block red">첫번째 영역</span>
+    <span class="display-test block oranged">두번째 영역</span>
+    <span class="display-test block yellow">세번째 영역</span>
+    <span class="display-test block green">네번째 영역</span>
+    <span class="display-test block blue">다섯번째 영역</span>
+
+    <br><br>
+
+    <div class="display-test">
+        <a href="https:www.naver.com" target="_blank">네이버로</a>
+
+    </div>
+
+    <br><br><br>
+
+    <!-- 각 li를 옆으로 나열 시키는 메뉴바 형태로 만들어보기 크기 자유--> <!--중요하니까 복습때도 참조-->
+    <ul class="menu1">
+        <li><a href="">HTML</a></li>
+        <li><a href="">CSS</a></li>
+        <li><a href="">JAVASCRIPT</a></li>
+        <li><a href="">JQUERY</a></li>
+    </ul>
+
+    <br><br><br>
+
+    <!--div안에 있는 a태그를 아래로 나열하는 방식으로 바꿔보기-->
+    <div class="menu2">
+        <a href="www.naver.com">네이버로</a>
+        <a href="www.google.com">구글로</a>
+        <a href="www.daum.net">다음으로</a>
+        <a href="www.oracle.com">오라클로</a>
+    </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트랜지션 관련 스타일</title>
+
+    <!--트랜지션, 애니메이션은 그냥 딱히 중요치는않음. -->
+
+    <style>
+        img{
+            margin-left: 100px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .translate:hover{
+            transform: translate(200px,200px); /*x축, y축*/
+        }
+
+        .transX:hover{
+            transform: translateX(300px); 
+        }
+
+        .transY:hover{
+            transform: translateY(200px);
+        }
+
+        .transZ:hover{
+            /*
+            z축으로 100px만큼 이동하지만 차이가 보이지 않는다.
+            perspective를 이용하여 원근감 처리하기
+            */
+
+            transform: perspective(200px) translateZ(100px);
+        }
+
+        h3~p{
+            background-color: beige;
+            margin-left: 500px;
+        }
+
+        .scale:active{
+            transform: scale(1.5);
+
+        }
+
+        .scaleX:active{
+            transform: scaleX(1.5);
+        }
+
+        .scaleY:active{
+            transform: scaleY(1.1);
+        }
+
+        .scaleY:hover{
+            transform: scale(1.1,1.1);
+        }
+
+        .skew:hover{
+            transform:skew(30deg);
+            transform:skewX(30deg);
+            transform:skewY(50deg);
+        }
+
+        .wrap{
+            width: 70px;
+            height: 70px;
+            background-color: cadetblue;
+        }
+
+        #track:hover div{
+            transform: translateX(1500px);
+            transition-duration: 5s; /*몇초간 처리할것인지*/
+            transition-property: all;
+        }
+
+        #key1{
+            transition-timing-function: linear;
+        }
+
+        #key2{
+            transition-timing-function: ease;
+        }
+
+        #key3{
+            transition-timing-function: ease-in;
+        }
+
+        #key4{
+            transition-timing-function: ease-in-out;
+        }
+
+        .wrap2{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+
+        #delay{
+            transition: all 3s;
+            transition-delay: 0.5s; /*지연 시간*/
+        }
+
+        #delay:active{
+            width:400px;
+            height:400px;
+            background-color: burlywood;
+            transform:rotate(360deg); /*회전시키기*/
+        }
+    </style>
+</head>
+<body>
+    <h1>트랜지션 관련 스타일</h1>
+    <h2>변형</h2>
+    <p>
+        태그가 특정 동작에 의해(active,hover) 변형(이동,확대,찌그러짐 등..)되는것
+    </p>
+
+    <hr>
+
+    <h3>태그 이동 시키기</h3>
+
+    <p>
+        translate 함수를 이용하여 설정된 태그를 특정 위치로 이동시키기
+    </p>
+
+    <!--(img.trans[width=200][height=200]+br)*4-->
+    <img src="../01_HTML/resources/강아지.jfif" alt="" class="translate" width="200" height="200"><br>
+    <img src="../01_HTML/resources/강아지.jfif" alt="" class="transX" width="200" height="200"><br>
+    <img src="../01_HTML/resources/강아지.jfif" alt="" class="transY" width="200" height="200"><br>
+    <img src="../01_HTML/resources/강아지.jfif" alt="" class="transZ" width="200" height="200"><br>
+
+    <h3>태그 확대하기</h3>
+    <p class="scale">
+        누르기
+    </p>
+
+    <p class="scaleX">
+        눌러주세요
+    </p>
+
+    <img src="../01_HTML/resources/강아지.jfif" class="scaleY">
+
+    <br><br>
+    <hr>
+
+    <h3>skew 적용</h3>
+    <img src="../01_HTML/resources/강아지.jfif" class="skew">
+
+    <br>
+    <h3>트랜지션 적용하기</h3>
+
+    <p>
+        태그가 변형 속성에 의해 변형될때 부드럽게 변형될 수 있도록 적용하는 속성 <br>
+        transition-property : 적용할 속성; <br>
+        transition-duration : 지속시간; <br>
+        transition-timing-function : linear,ease,ease-in,ease-out; 동작 느낌 <br>
+        transition: 한번에 모든 속성 적용;
+    </p>
+
+    <!--div.transitionDiv.transition.transi-->
+    <div class="transitionDiv transition transi"></div>
+
+    <!--div#track>(h4+div.wrap#key$)*5-->
+    <div id="track">
+        <h4>linear : 균일</h4>
+        <div class="wrap" id="key1"></div>
+        <h4>ease : 극초반 느리게 초반 빠르게 끝 느리게</h4>
+        <div class="wrap" id="key2"></div>
+        <h4>ease-in : 점점 빠르게</h4>
+        <div class="wrap" id="key3"></div>
+        <h4>ease-out : 점점 느리게</h4>
+        <div class="wrap" id="key4"></div>
+        <h4>ease-in-out : 시작지점 종료지점 천천히</h4>
+        <div class="wrap" id="key5"></div>
+    </div>
+
+    <h3>트랜지션 지연시키기</h3>
+    <!--div-->
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

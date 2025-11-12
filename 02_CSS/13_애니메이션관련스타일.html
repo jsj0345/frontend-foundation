@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 관련 스타일</title>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: darkorange;
+        }
+
+        /*사용할 애니메이션 효과 정의하기 (keyframe)*/
+        @keyframes ani1{
+            from{
+                background-color: cornflowerblue;
+                border: 1px solid black;
+            }
+
+            to{
+                background-color: darkblue;
+                border-radius: 50px;
+                           /*360도 회전, x축,y축으로 100px씩 이동, 1.25배 확대*/
+                transform: rotate(360deg) translate(100px,100px) scale(1.25);
+                border: 3px double white;
+
+            }
+        }
+
+        .ani1:active{
+            animation-name: ani1; /*사용할 keyframes 이름을 넣기*/
+            animation-duration: 3s; /*지속시간*/
+            animation-direction: alternate; /*정방향, alternate-reverse : 역방향*/
+            animation-iteration-count: infinite; /*반복횟수 (infinite 무한)*/
+            
+        }
+
+        /* %를 이용해서 중간 작업도 작성하기*/
+        @keyframes ani2{
+            0%{
+                background-color: blueviolet;
+            }
+
+            30%{
+                background-color: rgb(197,149,241);
+                transform: translate(50px,50px);
+            }
+
+            50%{
+                background-color: rgb(117,105,129);
+                transform: translate(-50px,50px);
+
+            }
+
+            70%{
+
+                background-color: darkblue;
+                transform: scale(1.25);
+
+            }
+
+            100%{
+
+                background-color: skyblue;
+                transform: rotate(180deg);
+
+            }
+        }    
+
+        .ani2:active{
+            /*위에서 따로 처리한 속성들 한번에 넣기*/
+            animation: ani2 5s infinite alternate;
+        }
+
+        @keyframes ani3{
+            0%{
+                transform: translateX(300px);
+            }
+
+            20%{
+                background-color: rgb(130,221,185);
+                transform: translate(150px,-55px);
+            }
+
+            40%{
+                background-color: rgb(35,140,201);
+                transform: skew(30deg);
+            }
+
+            60%{
+                background-color: rgb(75,180,95);
+                /*transition-timing-function: ease-in;*/
+            }
+
+            100%{
+                background-color: rgb(100, 83, 0);
+                transform: rotate(90deg);
+            }
+        }
+
+        .ani3:active{
+            /*위에서 따로 처리한 속성들 한번에 넣기*/
+            animation: ani3 10s infinite alternate;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1>애니메이션 관련 스타일</h1>
+
+    <h2>애니메이션</h2>
+
+    <p>
+        속성을 점차적으로 변화시켜 움직이는 효과를 내는 기법<br>
+        트랜지션과 비교했을때 트랜지션은 시작 스타일과 끝 스타일을 부드럽게 이어주는 기능을 하지만 <br>
+        애니메이션은 중간 원하는 위치에서 @keyframes를 이용하여 원하는 스타일을 지정할 수 있다. 
+    </p>
+
+    <br><br>
+
+    <h3>keyframes</h3>
+    <p>
+        애니메이션 시작지점과 끝 지저의 스타일을 정하고 keyframes의 이름을 지정 <br>
+        시작지점과 끝 지점 두개만 설정할 경우 from to 로 설정 <br>
+        중간에 작업이 있으면 %로 구분하여 설정
+    </p>
+
+    <pre>
+        @keyframes 키프레임명{
+            선택자{
+                스타일;
+            }
+        }
+    </pre>
+
+    <div class="ani1"></div>
+    <br><br>
+    <div class="ani2"></div>
+    <br><br>
+    <div class="ani3"></div>
+</body>
+</html>

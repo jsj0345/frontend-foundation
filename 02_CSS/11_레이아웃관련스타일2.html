@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 관련 스타일</title>
+
+    <!--포지션 relative, absolute,display none,float 알아두기-->
+
+    <style>
+        .outer{
+            /*해당 요소에 기준을 잡아 하위 요소들이 해당 위치를 기준으로 잡을 수 있게 설정한다.
+            만약 별도의 위치 기준이 정해지지 않는다면 body태그가 기준이 된다.*/
+            position: relative; /*하위 요소들의 기준*/
+        }
+
+        .positioning{
+            border: 1px solid black;
+
+        }
+
+        #first{
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+
+            
+        }
+
+        #second{
+            width: 150px;
+            height: 150px;
+            background-color: burlywood;
+
+            /*기준으로부터 절대적으로 움직이겠다.*/
+            position: absolute;
+
+            /*절대적인 위치가 정해지면 해당 위치로부터 top,left,right,bottom으로 이동 시킬 수 있다.*/
+            /*absolute로만 지정한다? 바디 태그를 기준으로 한 것임.*/
+
+            top: 50px;
+            left:50px;
+        }
+
+        #third{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+
+            position: absolute;
+
+            top:100px;
+            left:100px;
+        }
+
+        .fixed-area{
+            width: 100px;
+            height: 100px;
+            background-color: cornsilk;
+
+            /*position: fixed;*/
+            /*해당 위치에 고정되어 스크롤이 내려가도 계속 위치가 유지된다.*/
+
+        }
+
+        .z-test{
+
+            width: 150px;
+            height: 100px;
+            border: 1px solid black;
+            position : absolute; /*상위요소 기준대로 이동*/
+        }
+
+        #z1{
+            background-color: blanchedalmond;
+            top: 100px;
+            left: 100px;
+            z-index: 1;
+        }
+
+        #z2{
+            background-color: beige;
+            top:50px;
+            left:50px;
+            z-index: 2;
+            /*더 높은 수를 부여한 요소가 위로 올라가게 된다.*/
+        }    
+
+        #z3{
+           background-color: burlywood;
+        }
+
+        .vis-test{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid black;
+        }
+
+        #vis{
+            visibility: hidden;
+            /*해당 요소가 보이지 않지만 영역은 차지한다.*/
+
+            display: none; /*아예 사라져서 영역을 차지하지 않음.*/
+        }
+
+        .float-test{
+            border:1px solid black;
+            width: 70px;
+            height: 30px;
+            float: left; /*왼쪽으로부터 차례대로 공중에 뜬채로 이동된다.*/
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>배치 관련 스타일</h1>
+    <h3>position : 절대 위치와 상대 위치</h3>
+    
+    <!--기준 잡는거 나열하는거 중요함.-->
+    <!--div.outer>div.positioning{번째자식}*3-->
+    <div class="outer">
+        <div class="positioning" id="first">첫번째자식</div>
+        <div class="positioning" id="second">두번째자식</div>
+        <div class="positioning" id="third">세번째자식</div>
+    </div>
+
+    <br>
+
+    <h3>고정 위치</h3>
+
+    <div class="positioning fixed-area"></div>
+
+    <hr>
+
+    <h3>z-index</h3>
+    <p>
+        페이지 안의 요소들을 순서대로 위로 쌓는 속성
+
+    </p>
+
+    <div class="outer">
+        <div id="z1" class="z-test">요소1</div>
+        <div id="z2" class="z-test">요소2</div>
+        <div id="z3" class="z-test">요소3</div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <!--
+      z-index를 이용하여 요소를 띄워놓으면 다음 요소를 작성할때
+      해당 z-index 적용 요소 밑으로 들어가게 된다.
+    -->
+
+    <h3>visibility</h3>
+    <p>
+        페이지에 특정 요소를 보이지 않게 하는 속성
+    </p>
+
+    <p>
+        페이지에 특정 요소를 보이지 않게 하는 속성
+    </p>
+
+    <div class="vis-test"></div>
+    <div class="vis-test" id="vis"></div>
+    <div class="vis-test"></div>
+
+    <hr>
+
+    <h3>float</h3>
+    <p>
+        페이지 내의 요소들을 화면으로부터 띄워 왼쪽 또는 오른쪽으로 배치하는 속성
+    </p>
+
+    <!--div.float-test{요소$}*5-->
+    <div class="float-test">요소1</div>
+    <div class="float-test">요소2</div>
+    <div class="float-test">요소3</div>
+    <div class="float-test">요소4</div>
+    <div class="float-test">요소5</div>
+
+    <!--float 속성을 사용하게 되면 그 후 작성된 요소가
+    함께 float 적용될 수 있으니 적용이 끝났다면 float를 해지하는 작업 수행-->
+
+    <br clear="both"> <!--float 해제 방식-->
+
+    <h1>확인</h1>
+    <h2>확인2</h2>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

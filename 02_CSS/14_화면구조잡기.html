@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--여긴 봐두기-->
+
+    <style>
+        div{
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .wrap{
+            /*임의의 값으로 범위(크기) 설정*/
+            width: 1000px;
+            height: 800px;
+            margin: auto; 
+        }
+
+        .wrap>div{
+            /*가장 바깥쪽 div의 width를 100%로만큼 사용할 수 있도록 설정*/
+            width: 100%;
+
+        }
+
+        #header{
+            height: 20%;
+        }
+
+        #content{
+            height: 65%;
+            /*해당 요소의 자식요소들을 나열시키는 속성*/
+            /*해당 요소의 자식요소들은 자신이 갖는 width를 갖고 height는 부모요소의 height를 갖는다*/
+            display: flex; 
+        }
+
+        #footer{
+            height: 15%;
+        }
+
+        /*content의 영역을 나누기*/
+        #content>div{
+            /*content 영역 자식 div는 높이를 부모 높이 100%로 가지게 하는 설정*/
+            height: 100%;
+            
+            /* div 요소를 왼쪽으로 나열시키기*/
+            /*float: left;*/
+
+
+        }
+
+        
+        #content1{
+            width: 25%;
+        }
+
+        #content2{
+            width: 55%;
+        }
+
+        #content3{
+            width: 20%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <div id="header">
+
+        </div>
+
+        <div id="content">
+            <!--div#content$*3-->
+            <div id="content1"></div>
+            <div id="content2"></div>
+            <div id="content3"></div>
+        </div>
+
+        <div id="footer">
+
+        </div>
+
+    </div>
+</body>
+</html>
