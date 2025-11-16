@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLEX 정리</title>
+
+    <!--가장 많이 사용하는건 나열하는 방식, justify, align-items center-->
+    <!--gap은 마진 대신 사용 -->
+
+    <style>
+        *{
+            box-sizing: border-box;
+            
+            padding: 0px;
+        }
+
+        .container{
+            background-color: white;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .item{
+            background-color: rgb(169,143,194);
+            padding: 20px;
+            margin: 2px;
+        }
+
+        .row{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .column{
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .row-reverse{
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        /*2. justify */
+        .j-start{
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .j-center{
+            display: flex;
+            justify-content: center;
+        }
+
+        .j-end{
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .j-between{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .j-around{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        /*3.align-items(세로정렬)*/
+        .a-start{
+            display: flex;
+            align-items: flex-start;
+            height: 150px;
+        }
+
+        .a-center{
+            display: flex;
+            align-items: center;
+            height: 150px;
+        }
+
+        .a-end{
+            display: flex;
+            align-items: flex-end;
+            height: 150px;
+        }
+
+        .a-stretch{
+            display: flex;
+            align-items: stretch;
+            height: 150px;
+        }
+
+        /*4. flex-wrap 줄바꿈 */
+        .nowrap{
+            display: flex;
+            flex-wrap: nowrap;
+            /*공간이 부족하면 아이템이 줄어듬(기본값 줄바꿈하지 않음)*/
+            
+        }
+
+        .wrap{
+            /*공간이 부족하면 줄바꿈처리됨*/
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wrap .item,.nowrap .item{
+            width:150px;
+        }
+
+        /*5. gap(간격)*/
+        .gap{
+            display: flex;
+            gap: 20px;
+            /* 아이템 사이에 20px 만큼 간격 부여 (margin의 역할이지만 더 간결)*/
+        }
+
+        /* 6. flex(공간분배) */
+        .flex-container{
+
+            display: flex;
+            gap:10px;
+        }
+
+        .flex-1{
+            flex: 1; /*남은 공간의 비율을 1만큼 차지*/
+
+        }
+        
+        .flex-2{
+            flex : 2; /*남은 공간의 비율을 2만큼 차지 1의 두배*/
+        }
+
+        /* 7. align-self (개별 정렬) */
+        /* align-items 무시(개별 적용) */
+
+        .self-container{
+            display: flex;
+            height: 150px;
+        }
+
+        .self-start{
+            align-self: start; /*이 아이템만 위쪽 정렬*/
+        }
+
+        .self-center{
+            align-self: center; /*이 아이템만 중앙 정렬*/
+        }
+
+        .self-end{
+            align-self: end; /*이 아이템만 아래쪽정렬*/
+        }
+
+        /*8. order 순서변경 */
+        .order-container{
+            display: flex;
+        }
+
+        .order-1{
+            order: 1; /*작은숫자가 앞으로 기본값이 0이다*/
+        }
+
+        .order-2{
+            order: 2;
+        }
+
+        .order-3{
+            order: 3; /*큰 숫자가 뒤로*/
+        }
+
+        /* 중앙 위치해보기*/
+        .align-center{
+            display: flex;
+            height: 150px;
+            justify-content : center;
+            align-items: center;
+        }
+
+        /* between으로 로고 메뉴 */
+        .align-between{
+            display : flex;
+            justify-content : space-between;
+            align-items: center; 
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <h1>display : flex;</h1>
+    <h2>1.flex-direction(방향)</h2>
+
+    <h3>row (기본값 ->)</h3>
+    <!-- 가로로 나열-->
+    <div class="container row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div> 
+
+    <h3>column (세로->)</h3>
+    <!--세로로 나열-->
+    <div class="container column">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+    <h3>row-reverse(<-- 가로 역방향)</h3>
+    <!--가로 역순 나열-->
+    <div class="container row-reverse">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+    
+    <h2>2.justify-content: (가로 정렬)</h2>
+
+    <h3>flex-start(왼쪽)</h3>
+    <!--아이템을 컨테이너 왼쪽에 배치-->
+    <!--div.container.j-start>div.item{$}*3-->
+    <div class="container j-start">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>center(중앙)</h3>
+    <!--아이템을 컨테이너 중앙에 배치-->
+    <div class="container j-center">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>right(오른쪽)</h3>
+    <!--아이템을 컨테이너 오른쪽에 배치-->
+    <div class="container j-end">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>space-between</h3>
+    <!--아이템 사이에 균등한 가격,(양쪽 끝 벽에 붙는다)-->
+    <div class="container j-between">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>space-around</h3>
+    <!--아이템 주위에 균등한 간격,양쪽 끝에도 간격이 생긴다.-->
+    <div class="container j-around">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h2>3.align-items (세로정렬)</h2>
+
+    <h3>flex-start (위)</h3>
+    <!--div.container.a-start>div.item{$}*3-->
+    <div class="container a-start">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>flex-center (중앙)</h3>
+    <!--div.container.a-start>div.item{$}*3-->
+    <div class="container a-center">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>flex-end (아래)</h3>
+    <!--div.container.a-start>div.item{$}*3-->
+    <div class="container a-end">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>stretch (늘림)</h3>
+    <!--div.container.a-start>div.item{$}*3-->
+    <div class="container a-stretch">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h2>4.flex-wrap(줄바꿈)</h2>
+
+    <h3>nowrap(기본값-한줄)</h3>
+    <div class="container nowrap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+
+    <h3>wrap(줄바꿈)</h3>
+    <div class="container wrap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+
+    <h2>5. gap (간격)</h2>
+
+    <h3>gap : 20px</h3>
+
+    <!--div.container.gap>div.item{$}*5-->
+    <div class="container gap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        
+    </div>
+
+    <h2>6. flex(공간분배)</h2>
+
+    <h3>flex : 1(균등 분배)</h3>
+
+    <!--div.container.flex-container>div.item.flex-1{flex-1}*3-->
+    <div class="container flex-container">
+        <div class="item flex-1">flex-1</div>
+        <div class="item flex-1">flex-1</div>
+        <div class="item flex-1">flex-1</div>
+    </div>
+
+    <h3>flex : 1,2,1(비율 분배)</h3>
+    <div class="container flex-container">
+        <div class="item flex-1">flex-1</div>
+        <div class="item flex-2">flex-2</div>
+        <div class="item flex-1">flex-1</div>
+    </div>
+
+    <h2>7. align-self(개별정렬)</h2>
+
+    <h3>각 아이템 다르게</h3>
+
+    <!--div.container.self-container>div.item.self-*3-->
+    <div class="container self-container">
+        <div class="item self-start">start</div>
+        <div class="item self-center">center</div>
+        <div class="item self-end">end</div>
+    </div>
+
+    <h2>8. order(순서변경)</h2>
+    <h3>HTML: 1,2,3 -> CSS : 3,1,2</h3>
+
+    <!--div.container.order-container>div.item.order-{$(order:)}*3-->
+    <div class="container order-container">
+        <!-- HTML 작성 순서와 상관없이 화면에 보이는 순서 변경-->
+        <div class="item order-2">1(order:2)</div> <!--두번째로 표시-->
+        <div class="item order-3">2(order:3)</div> <!--세번째로 표시-->
+        <div class="item order-1">3(order:1)</div> <!--첫번째로 표시-->
+    </div>
+
+    <h3>중앙 정렬해보기</h3>
+
+    <div class="container align-center">
+        <div class="item">중앙위치</div>
+    </div>
+
+    <h3>로고 메뉴 between</h3>
+    <!--div.align-between.container>div.item*2-->
+    <div class="align-between container">
+        <div class="item">로고</div>
+        <div class="item">메뉴</div>
+    </div>
+
+    
+     
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

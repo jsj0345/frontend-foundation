@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!--
+     ex) .container{
+       display : flex;
+     }
+
+     -> 자동으로 자식들이 가로로 나열됨.
+     -> width가 남으면 옆으로 늘어남.
+     -> height는 부모 기준으로 자동 맞춰짐. 
+    -->
+
     <style>
         div{
             border: 1px solid black;
@@ -17,55 +27,51 @@
             width: 1000px;
             height: 800px;
             margin: auto;
+
+            display: flex;
+            flex-direction: column; /*세로 방향으로 쌓기*/
+
         }
 
-        .wrap>div{
-            width: 100%;
-        }
-        #header>div,#content>div{
-            float: left;
-            height: 100%;
+        #header,#content{
+            display: flex;
         }
 
         #header{
-            height: 20%;
+            /*display flex에서 비율 정하기*/
+            flex: 1;
         }
 
         #header1{
-            width: 20%;
+            flex: 1;
         }
          #header2{
-            width: 50%;
+            flex: 2;
         }
          #header3{
-            width: 30%;
+            flex: 1;
         }
 
-
-
         #menubar{
-            height: 5%;
+            /*소수점 표현도 가능*/
+            flex: 0.2;
         }
         
         #content{
-            height: 55%;
+            flex: 2;
         }
 
         #content1{
-            width: 15%;
+            flex: 1;
         }
         #content2{
-            width: 60%;
+            flex: 3;
         }
         #content3{
-            width: 25%;
+            flex: 2;
         }
-
-        
-        
-        
         #footer{
-            height: 20%;
+            flex: 0.8;
         }
 
 

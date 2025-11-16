@@ -22,6 +22,13 @@
             width: 50%;
             /*CSS에서 기본적으로 width는 padding과 border를 포함하지 않는다.*/
             box-sizing: border-box; /*padding과 border까지 포함하여 설정*/
+
+            /*
+            box-sizing: border-box를 하면 기존에 padding 20px(상,하,좌,우)를 늘리면
+            상하 20px x2 좌우 20px x 2인데 어찌됐든 40px늘어난거다. 
+            컨텐츠 영역은 content+border+padding이니까 컨텐츠 영역이 늘어난다.
+            근데 box-sizing: border-box를 하면 기존에 늘어났던 영역들을 크기를 맞추기 위해 줄이는 느낌으로 보면 된다. 
+            */
         }
 
         .div-test{

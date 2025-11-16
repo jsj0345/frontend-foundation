@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            box-sizing: border-box;
+            border: 1px solid black;
+            
+        }
+
+        #footer{
+            /*푸터 작업을 위해 임의의 크기 지정*/
+            width: 1000px;
+            height: 250px;
+        }
+
+        #footer>div {
+            width: 100%;
+        }
+
+        #footer1{
+            height: 15%;
+            background-color: beige;
+            
+        }
+
+        #footer2{
+            height: 85%;
+            background-color: bisque;
+        }
+
+        #footer1>a{
+            text-decoration: none; /*밑줄 제거*/
+            color: black;
+            margin: 15px; /*인라인 요소라 좌우만 늘어남*/ 
+            vertical-align: middle; /*수직 구조에서 가운데로*/
+        }
+
+        #footer1>a:hover{
+            color: red;
+        }
+
+        #footer2>p{
+            color: gray;
+            box-sizing: border-box;
+            margin: 0px; /*기존 요소에 걸려있는 margin 0으로 처리*/
+            
+
+        }
+
+        #p1{
+            height: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #p2{
+            height: 20%;
+            padding-left: 20px;
+            font-size: 12px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div id="footer">
+        <div id="footer1">
+            
+            <a href="#">이용약관</a> |
+            <a href="#">개인정보처리방침</a> |
+            <a href="#">인재 채용 문의</a> |
+            <a href="#">훈련비 게시</a> |
+            <a href="#">강사 구인</a> |
+        </div>
+
+        <div id="footer2">
+           <p id="p1">
+            강남점 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F <br>
+            강남점 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F, 5F, 7F <br>
+            강남점 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F, 6F <br>
+            종로점 : 서울특별시 중구 남대문로 120 그레이츠 청계(구 대일빌딩) 2F, 3F <br> 
+            당산점 : 서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F, 20F <br>
+            논현점 : 서울특별시 강남구 논현로 132길 9 마루빌딩 1F, 2F, 3F <br>
+            부산점 : 부산 부산진구 중앙대로 627 삼비빌딩 2F, 12F  <br>
+
+            
+
+           </p>
+
+           <p id="p2">
+              Copyright © 1998-2025 KH Information Educational Institute All Right Reserved
+
+           </p>
+            
+
+        </div>
+
+    </div>
+</body>
+</html>

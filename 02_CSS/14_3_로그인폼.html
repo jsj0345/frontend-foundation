@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            
+            box-sizing: border-box; /*딱 맞게 해주는 효과*/
+
+        }
+
+        #content3{
+            width: 300px;
+            height: 600px;
+        }
+
+        #login_form{
+            width: 100%;
+            height: 30%;
+        }
+
+        #login_form_input>*{
+            /*display: flex;*/
+            height:100%;
+            float: left;
+
+        }
+
+        #login_form_input{
+            height: 50%;
+        }
+
+        #login_input_id_pwd{
+            width:65%;
+        }
+
+        #login_input_btn{
+            width:35%;
+        }
+
+        #login_input_id_pwd>input{
+            width: 100%;
+            height: 50%;
+            box-sizing: border-box;
+        }
+
+        #login_input_btn>input{
+            width:100%;
+            height:100%;
+            box-sizing: border-box;
+        }
+
+        #login_form_etc{
+            text-align: center;
+        }
+
+        #login_form_etc>a{
+            text-decoration: none;
+            color: black;
+            margin: 10px; /*a태그니까 좌우로 마진 확장 */
+            font-size: 13px;
+        }
+
+        #login_form_etc>a:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="content3">
+        <!--아이디 비밀번호 입력 로그인폼-->
+
+        <div id="login_form">
+            <form action="login.me" method="post" id="login_form_input">
+
+                <!-- 아이디 비밀번호 입력상자 -->
+                <div id="login_input_id_pwd">
+                    <input type="text" name="userId" placeholder="아이디 입력" required> <br>
+                    <input type="password" name="userPwd" placeholder="비밀번호 입력" required> 
+                </div>
+
+                <!-- 로그인 버튼용 영역 -->
+                <div id="login_input_btn">
+                    <input type="submit" value="로그인">
+                </div>
+                
+            </form>
+            
+            <!-- 회원가입, id/pwd 찾기 -->
+            <div id="login_form_etc">
+                <a href="#">회원가입</a>
+                <a href="#">ID/PWD 찾기</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

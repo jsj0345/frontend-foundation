@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="resources/style/viewStyle.css">
+
+</head>
+<body>
+     <div class="wrap">
+        <div id="header">
+            <div id="header1"></div>
+            <div id="header2">
+                <form action="search.bo" method="get" id="search_form">
+                    <!-- (div#search_>input)*2 -->
+                    <div id="search_text">
+                        <input type="search" name="keyword">
+                    </div>
+                    
+                    <div id="search_btn">
+                        <input type="submit" value="검색">
+                    </div>
+                </form>
+            </div>
+            <div id="header3"></div>
+        </div>
+
+
+        <div id="menubar">
+            <!-- ul#menu>(li>a)*5 -->
+            <ul id="menu">
+                <li>
+                    <a href="">JAVA</a>
+                </li>
+                <li>
+                    <a href="">ORACLE</a>
+                </li>
+                <li>
+                    <a href="">FRONTEND</a>
+                    <!-- ul>(li>a)*4 -->
+                    <ul>
+                        <li><a href="">HTML</a></li>
+                        <li><a href="">CSS</a></li>
+                        <li><a href="">JAVASCRIPT</a></li>
+                        <li><a href="">JQUERY</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">SERVER</a>
+                    <ul>
+                        <li><a href="">JDBC</a></li>
+                        <li><a href="">SERVLET</a></li>
+                        <li><a href="">JSP</a></li>
+                        <li><a href="">AJAX</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">FRAMEWORK</a>
+                </li>
+            </ul>
+        </div>
+        
+        
+        
+        <div id="content">
+            <!-- div#content$*3 -->
+             <div id="content1"></div>
+             <div id="content2"></div>
+             <div id="content3">
+                <!-- 아이디 비밀번호 입력 로그인폼 -->
+                <div id="login_form">
+                    <form action="login.me" method="post" id="login_form_input">
+                        <!-- 아이디 비밀번호 입력상자 -->
+                        <div id="login_input_id_pwd">
+                            <input type="text" name="userId" placeholder="아이디 입력" required> <br>
+                            <input type="password" name="userPwd" placeholder="비밀번호 입력" required> 
+                        </div>
+                        <!-- 로그인 버튼용 영역 -->
+                        <div id="login_input_btn">
+                            <input type="submit" value="로그인">
+                        </div>
+                    </form>
+                    
+                    <!-- 회원가입,id/pwd 찾기 -->
+                    <div id="login_form_etc">
+                        <a href="#">회원가입</a>
+                        <a href="#">ID/PWD 찾기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="footer">
+            <div id="footer1">
+                <a href="#">이용약관</a> ｜
+                <a href="#">개인정보처리방침</a>｜
+                <a href="#">인재 채용 문의</a>｜
+                <a href="#">훈련비 게시</a>｜
+                <a href="#">강사 구인</a>
+            </div>
+            <div id="footer2">
+                <p id="p1"> 
+                    강남점 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F <br>
+                    강남점 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F, 5F, 7F <br>
+                    강남점 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F, 6F <br>
+                    종로점 : 서울특별시 중구 남대문로 120 그레이츠 청계(구 대일빌딩) 2F, 3F <br>
+                    당산점 : 서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F, 20F <br>
+                    논현점 : 서울특별시 강남구 논현로 132길 9 마루빌딩 1F, 2F, 3F <br>
+                    부산점 : 부산 부산진구 중앙대로 627 삼비빌딩 2F, 12F 
+                </p>
+                <p id="p2">
+                    Copyright © 1998-2025 KH Information Educational Institute All Right Reserved
+                </p>
+          </div>
+        </div>
+    </div>    
+</body>
+</html>

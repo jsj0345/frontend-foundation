@@ -1,0 +1,254 @@
+div,form{
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.wrap{
+    /*임의의 값으로 범위(크기)설정*/
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column; /*세로 방향으로 쌓기*/
+
+}
+
+#header,#content{
+    display: flex;
+}
+
+/* -----------------------------------header영역------------------------------------------- */
+
+#header{
+    /*display flex에서 비율 정하기*/
+    flex: 1;
+}
+
+#header1{
+    flex: 1;
+}
+#header2{
+    flex: 2;
+    position:relative; /*하위 요소의 기준 잡기*/
+}
+    
+#search_form{
+    width: 80%;
+    height: 20%;
+    position: absolute; /*기준으로부터 위치하겠다.*/
+    margin : auto;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    /* 중앙으로 이동시키고자 하는 요소를 절대적인 위치로 이동하는 설정
+        position : absolute 후 margin:auto와 함께 상하좌우 모두 0px로 설정하면
+        중앙으로 위치한다.
+    */
+}
+/* 검색 텍스트박스와 버튼을 옆으로 붙이는 역할 */
+#search_form>div{
+    float: left;
+    height: 100%;
+}
+/* 텍스트박스와 검색버튼 영역길이 */
+#search_text{width: 80%;}
+#search_btn{width: 20%;}
+
+/* 텍스트박스와 검색버튼 영역에 꽉차게 처리 */
+#search_form input{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+    #header3{
+    flex: 1;
+}
+
+/* -------------------------------메뉴바----------------------------------- */
+
+#menubar{
+    /*소수점 표현도 가능*/
+    flex: 0.2;
+}
+
+#menu{
+    /* border: 1px solid red; */
+    list-style-type: none; /*불릿기호 제거*/
+    margin: 0px; /*ul태그가 가지고 있는 margin,padding 없애기*/
+    padding: 0px;
+    /* display: flex; */
+    height: 100%;
+}
+#menu>li{
+    /* border: 1px solid blue; */
+    float: left;
+    width: 15%;
+    height: 100%;
+    text-align: center;
+    /* 세부 메뉴 기준 잡기*/
+    position: relative;
+}
+
+#menu a{
+    /* border: 1px solid green; */
+    text-decoration: none; 
+    color: cornflowerblue;
+    font-size: 20px;
+    font-weight: bold;
+    /*a태그는 인라인 요소이기 때문에 크기를 키우려면 블럭요소로 변경*/
+    width: 100%;
+    height: 100%;
+    display: block; 
+}
+
+#menu a:hover{
+    color: darkblue;
+    font-size: 21px;
+}
+
+#menu>li>ul{
+    list-style-type: none;
+    margin: 0px; 
+    padding: 0px;
+    width:100%; /*추가*/
+    display: none; /*평소에는 안보이게*/
+    position: absolute; /*추가*/
+}
+
+/* li요소에 호버되면 ul요소 보여지게 block처리 */
+#menu>li:hover ul{
+    display: block;
+}
+
+#menu>li>ul a{
+    font-size: 18px;
+    color: deepskyblue;
+}
+
+#menu>li>ul a:hover{
+    color: lightblue;
+    font-size: 19px;
+}
+
+
+/* ----------------------------------content------------------------------------------- */
+
+#content{
+    flex: 2;
+}
+
+#content1{
+    flex: 1;
+}
+#content2{
+    flex: 3;
+}
+#content3{
+    flex: 2;
+}
+
+#login_form{
+    width: 100%;
+    height: 30%;
+    border:none;
+}
+
+#login_form_input>*{
+    /* display: flex; */
+    height: 100%;
+    float: left;
+}
+
+#login_form_input{
+    height: 80%;
+    border: none;
+}
+
+#login_input_id_pwd{
+    width: 65%;
+}
+#login_input_btn{
+    width: 35%;
+}
+
+#login_input_id_pwd>input{
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+}
+
+    #login_input_btn>input{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#login_form_etc{
+    border: none;
+    height:20%;
+    text-align: center;
+}
+
+#login_form_etc>a{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    font-size: 13px;
+}
+
+#login_form_etc>a:hover{
+    color: red;
+}
+
+
+
+/*---------------------------------------footer-------------------------------------  */
+
+#footer{
+    flex: 0.8;
+}
+
+#footer>div{
+    width: 100%;
+}
+
+#footer1{
+    height: 15%;
+    background-color: gainsboro;
+}
+
+#footer2{
+    height: 85%;
+}
+
+#footer1>a{
+    text-decoration: none; /*밑줄제거*/
+    color: black;
+    margin: 20px;
+    vertical-align: middle; /*수직 구조에서 가운데로 */
+}
+
+#footer1>a:hover{
+    color: red;
+}
+
+#footer2>p{
+    color: gray;
+    box-sizing: border-box;
+    margin: 5px; 
+}
+
+#p1{
+    height: 80%;
+    padding: 10px;
+    font-size: 15px;
+}
+#p2{
+    height: 20%;
+    padding-left: 20px;
+    font-size: 12px;
+}

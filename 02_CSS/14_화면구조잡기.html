@@ -8,6 +8,13 @@
     <!--여긴 봐두기-->
 
     <style>
+        /*
+        맨 처음에 div 태그에 border와 box-sizing: border-box를 주는 이유는,
+        div는 기본적으로 눈에 보이지 않는 빈 영역이기 때문이다.
+        그래서 개발 단계에서 영역을 눈으로 확인하기 위해 border로 표시해주고,
+        또한 크기를 계산할 때 padding·border를 포함하도록 하여
+        의도한 레이아웃 크기 그대로 할당되도록 하려는 목적이다.
+        */
         div{
             border: 1px solid black;
             box-sizing: border-box;
