@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수와 자료형</title>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+    <h2>변수 선언시 var,let,const를 이용하여 선언</h2>
+
+    <h3>var,let,const의 차이점</h3>
+
+    <h4>1)변수 선언 방법</h4>
+    <button onclick="test1();">클릭</button>
+
+
+    <h4>2)변수 범위(scope)</h4>
+    <button onclick="test2()">클릭</button>
+
+
+
+    <script>
+        function test1() {
+            //1.var의 재선언, 재할당
+            var userId = "user01";
+            console.log(userId);
+            var userId = "user02"; //재선언 가능(자바에선 불가능)
+            console.log(userId);
+            userId = "user03"; //재할당 가능(자바에서도 가능)
+            console.log(userId);
+
+            //2.let의 재선언,재할당
+            let userPwd = "pass01";
+            console.log(userPwd);
+            //let userPwd = "pass02"; //재선언 불가능
+            console.log(userPwd);
+            userPwd = "pass02"; // 재할당가능
+            console.log(userPwd); 
+
+            //3.const의 재선언,재할당 (상수)
+            const userName = "김유저";
+
+            //const userName ="김사원"; //재선언 불가능
+
+            userName = "김사원";  // 상수이기때문에 변경 불가능 
+            //문법오류로는 보이진 않지만 실행시 오류 발생 
+
+            console.log(userName);
+
+            /*
+             자바스크립트 변수인 var는 자유롭게 변수 선언을 하고
+             사용할 수 있는 장점이자 단점이 존재한다.
+             중복된 변수가 발생할 수 있고 값이 변경되어질 여지가 있으며
+             스코프(범위)를 벗어나서도 접근이 가능하기때문에
+             es6문법부터 보완된 let과 const가 생기게 되었다.
+
+            */
+        }
+
+        //범위(scope) 확인
+        function test2() {
+
+            //1) var는 function scope : 변수가 선언된 함수 영역 내에서 사용 가능한 범위
+            if(true) {
+                var name = "김바바";
+
+            }
+
+            console.log(name); //블럭 안에 작성되어 있어도 같은 함수내에서는 접근 가능
+
+            //2) let,const는 block scope : 변수가 선언된 블럭(영역)내에서 사용 가능 
+            if(true) {
+                //let age = 20;
+                const height = 188.8;
+
+            }
+
+            //console.log(age);
+            //console.log(height);
+            //let과 const는 자바와 같이 지역변수 개념으로 적용된다(block scope - 선언된 블럭위치에서 접근)
+
+
+
+        }
+
+
+    </script>
+
+    <h3>*변수 선언 위치에 따른 전역변수 / 지역변수</h3>
+
+    <script>
+        //함수영역이 아닌 스크립트 영역에서 선언된 변수는 전역변수로 사용 
+        var declareVar = "var 전역변수";
+        let declareLet = "let 전역변수";
+        const declareConst = "const 전역변수";
+
+        //해당 문서가 전부 로딩된 이후에 실행할 코드를 작성하는 영역
+        window.onload = function() { //window객체의 onload 이벤트 속성에 익명함수 정의
+            //전역변수명과 동일하게 지역변수 선언 및 할당
+            //console.log(declareVar, declareLet, declareConst);
+            //window.onload는 "문서의 모든 요소와 리소스 로드가 끝난 후 실행되는 이벤트"
+
+            //전역변수명과 동일하게 지역변수 선언 및 할당
+            var declareVar = "var 지역변수";
+            let declareLet = "let 지역변수";
+            const declareConst = "const 지역변수";
+
+
+            console.log("=======================");
+
+            // 지역변수가 우선권을 갖기 때문에 지역변수에 선언한 내용이 출력된다. 
+            console.log(declareVar, declareLet, declareConst);
+
+            // 블럭 내에서 전역변수에 접근하는 방법?
+            // var 변수는 window객체의 속성으로 들어가기때문에
+            // 블럭내에서도 window.속성명으로 접근이 가능하다.
+            // let,const는 불가능
+            // window 객체에 속성을 추가하게 되는 과정에서 기존 속성명과 겹치면
+            // window 객체 자체속성이 오염될 여지가 있다.
+            console.log(window.declareVar);
+            console.log(window);
+
+            /*
+            window.declareVar가 출력되는 이유는
+            "함수가 끝났기 때문도 아니고, window가 살아있어서가 아니라"
+            var로 선언한 전역변수는 처음부터 window 객체의 속성으로 올라가 있기 때문이다. 
+
+            즉, 전역 var = window 객체의 프로퍼티 라는 규칙이 있어서 그렇다. 
+
+            원래 var형은 걍 스코프란 개념 자체가 없다. 어디서든 접근이 가능하다. 
+            
+            하지만 아까 위에 있는 코드는 함수 내부에선 지역 외부에선 전역 개념이니까 
+            
+            전역 var = window 객체의 프로퍼티 이렇게 말한것이다. 
+            */
+
+                        
+
+        }
+
+        function test(){
+            console.log("test함수에서 전역변수 접근")
+            console.log(declareVar, declareLet, declareConst);
+        }
+
+        function test3() {
+            window.declareVar = "변경";
+
+            /*
+            전역 var = 윈도우 프로퍼티; 인데
+
+            이제 위에선 직접적으로 접근을 한 것 이므로 값이 바뀐다. 
+            */
+
+        }
+    </script>
+
+    <button onclick="test();">테스트</button>
+    <button onclick="test3();">테스트3</button>
+
+    <h3>자료형</h3>
+    <p>
+        변수 선언시 자료형을 별도로 지정하지 않는다(자료형의 개념이 없는것은 아니다) <br>
+        변수에 대입되는 값(리터럴)에 따라서 자료형이 자동으로 결정된다.
+    </p>
+
+    <h4>자바스크립트의 자료형</h4>
+    <ul>
+        <li>string (문자열)</li>
+        <li>number (숫자)</li>
+        <li>boolean (논리값)</li>
+        <li>object (객체)</li>
+        <li>function (함수)</li>
+        <li>undefined (초기화되지 않은 변수)</li>
+        <li>null (값이없음)</li>
+    </ul>
+
+    <button onclick="typeTest();">자료형 테스트</button>
+    <div id="area" style="border:1px solid black;"></div>
+
+    <script>
+        function typeTest(){
+            let name ="김사원";
+            let age = 20;
+            let flag = true;
+
+            let hobby =['달리기','걷기','점프'];
+            
+            let user = {
+                name : '김유저',
+                age : 20,
+                id : 'user01'
+            };
+
+            let testFunc = function(){
+                alert("함수");
+            };
+
+            let noValue;
+
+            let isNull = null;
+
+            let divEl = document.querySelector("#area");
+
+            //자료형을 확인 하는 함수 typeof()
+
+            divEl.innerHTML = name +"의 자료형 : " + typeof(name) + "<br>";
+            divEl.innerHTML += age +"의 자료형 : " + typeof(age) + "<br>";
+            divEl.innerHTML += flag +"의 자료형 : " + typeof(flag) + "<br>";
+            divEl.innerHTML += hobby +"의 자료형 : " + typeof(hobby) + "<br>";
+            divEl.innerHTML += user +"의 자료형 : " + typeof(user) + "<br>";
+            divEl.innerHTML += testFunc +"의 자료형 : " + typeof(testFunc) + "<br>";
+            divEl.innerHTML += noValue +"의 자료형 : " + typeof(noValue) + "<br>";
+            divEl.innerHTML += isNull +"의 자료형 : " + typeof(isNull) + "<br>";
+
+            //객체 내부 필드 접근
+            divEl.innerHTML += user.name+"의 나이는 : " + user.age +"살이고 아이디는 " + user.id +"입니다.";
+
+            console.log(name);
+            console.log(age);
+            console.log(flag);
+            console.log(hobby);
+            console.log(user);
+            console.log(testFunc);
+            console.log(noValue);
+            console.log(isNull);
+
+
+            
+        }
+    </script>
+</body>
+</html>

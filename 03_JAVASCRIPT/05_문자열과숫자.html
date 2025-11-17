@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열과 숫자</title>
+
+    <!--봐두면 좋은 것들 자동형변환 되는것,문자열 처리 함수-->
+
+    <style>
+        .area{
+            width: 300px;
+            border: 1px solid black;
+        }
+
+        .small{
+            height: 200px;
+        }
+
+        .big{
+            height: 500px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>문자열과 숫자</h1>
+    <h3>문자열 관련 함수</h3>
+
+    <button onclick="stringFunc();">문자열 처리 함수</button>
+
+    <div id="area1" class="area big"></div>
+
+    <script>
+        function stringFunc(){
+            var str = "Hello World";
+
+            var area1 = document.querySelector("#area1"); //div요소 추출
+
+            area1.innerHTML = "str : " + str + "<br>";
+            area1.innerHTML += "toUpperCase() : " + str.toUpperCase() + "<br>";
+            area1.innerHTML += "toLowerCase() : " + str.toLowerCase() + "<br>";
+            area1.innerHTML += "문자열의 길이 : " + str.length + "<br>";
+
+            for(var i=0; i < str.length; i++) {
+                area1.innerHTML += i+"번째 인덱스 : " + str.charAt(i) + "<br>";
+            }
+
+            area1.innerHTML += "앞에서부터 첫 l의 위치 : " + str.indexOf("l") + "<br>";
+            area1.innerHTML += "뒤에서부터 첫 l의 위치 : " + str.lastIndexOf("l") + "<br>";
+            area1.innerHTML += "앞에서부터 첫 a의 위치 : " + str.indexOf("a") + "<br>"; //없으면 -1
+
+            area1.innerHTML += "substring(시작인덱스) : " + str.substring(6) + "<br>";
+            area1.innerHTML += "substring(시작인덱스,끝인덱스) : " + str.substring(0,2) + "<br>"; //끝인덱스 -1
+
+            var str2 = "사과,포도,딸기,바나나";
+            var fruits = str2.split(",");
+            area1.innerHTML += "fruits : " + fruits + "<br>";
+            area1.innerHTML += "fruits의 자료형 : " + typeof(fruits) + "<br>";
+
+
+            /*
+            위 코드를 보면 fruits는 사과 포도 딸기 바나나 이렇게 나눠져야 할거같은데
+
+            안나눠짐. 왜그럴까?
+
+            "문자열" + 배열 -> 배열이 자동으로 문자열로 변환됨
+
+            JS는 배열을 문자열로 변환할 때 요소들을 쉼표(,)로 join함. 
+            */
+
+        }
+    </script>
+
+    <hr>
+    <h3>*숫자 관련 함수</h3>
+
+    <button onclick="mathFunc();">숫자 관련 함수</button>
+
+    <div id="area2" class="area small"></div>
+
+    <script>
+        function mathFunc() {
+            var area2 = document.getElementById("area2");
+
+            area2.innerHTML = "절대값 : " + Math.abs(-123)+"<br>";
+            area2.innerHTML += "랜덤값 : " + Math.random()+"<br>"; /*0.0~1.0 사이 랜덤값*/
+            area2.innerHTML += "반올림 : " + Math.round(1.234)+"<br>";
+            area2.innerHTML += "버림 : " + Math.floor(1.234)+"<br>";
+            area2.innerHTML += "올림 : " + Math.ceil(1.09)+"<br>";
+            area2.innerHTML += "제곱근 : " + Math.sqrt(4)+"<br>";
+        }
+    </script>
+
+    <hr>
+
+    <h3>문자열과 숫자간의 산술 연산</h3> <!--중요-->
+
+    <button onclick="arithmetic();">산술연산</button>
+
+    <div id="area3" class="area big"></div>
+
+    <script>
+        function arithmetic() {
+            var area3 = document.querySelector("#area3");
+
+            let test1 = 5+5;
+            let test2 = 5+"5";
+            let test3 = "5"+5;
+            let test4 = "5"+5+5;
+
+            area3.innerHTML = "test1 : " +test1 +"<br>"; //10
+            area3.innerHTML += "test2 : " +test2 +"<br>"; //55
+            area3.innerHTML += "test3 : " +test3 +"<br>"; //55
+            area3.innerHTML += "test4 : " +test4 +"<br>"; //555
+
+            //문자열+숫자 시 문자열 덧셈처리
+            
+            //덧셈 연산이 아닌 다른 연산처리해보기
+
+            let test5 = "5"-5;  
+            let test6 = "5"*5;
+            let test7 = "5"/5;
+            let test8 = "5"%5;
+
+            // 자동으로 캐스팅 되면서 숫자 연산처리가 가능함. 
+
+            area3.innerHTML += "test5 : " + test5 + "<br>"; // 0
+            area3.innerHTML += "test6 : " + test6 + "<br>"; // 25
+            area3.innerHTML += "test7 : " + test7 + "<br>"; // 1
+            area3.innerHTML += "test8 : " + test8 + "<br>"; // 0
+
+            /*
+            문자열 + 숫자 → 결과는 문자열(string)
+            문자열 - 숫자, 문자열 * 숫자, 문자열 / 숫자, 문자열 % 숫자 → 결과는 number
+            */
+
+            //강제 형변환(문자열 -> 숫자)
+            //Number(문자열)
+            //parseInt(문자열)
+            //parseFloat(문자열)
+
+            let iNum = 2;
+            let sNum = "3";
+
+            let test9 = iNum+sNum;
+            let test10 = iNum + Number(sNum);
+            let test11 = iNum + parseInt(sNum);
+            let test12 = iNum + parseFloat(sNum);
+
+            area3.innerHTML += "test9 : " + test9 + "<br>"; // 23
+            area3.innerHTML += "test10 : " + test10 + "<br>"; // 5
+            area3.innerHTML += "test11 : " + test11 + "<br>"; // 5
+            area3.innerHTML += "test12 : " + test12 + "<br>"; // 5
+
+            let fNum = "1.2345";
+
+            let test13 = iNum + fNum;
+            let test14 = iNum + Number(fNum);
+            let test15 = iNum + parseInt(fNum);
+            let test16 = iNum + parseFloat(fNum);
+
+            area3.innerHTML += "test13 : " + test13 + "<br>"; //21.2345
+            area3.innerHTML += "test14 : " + test14 + "<br>"; //3.2344999999999997
+            area3.innerHTML += "test15 : " + test15 + "<br>"; //3
+            area3.innerHTML += "test16 : " + test16 + "<br>"; //3.2344999999999997
+
+            //Number() 함수와 parseXXX 함수 차이점
+            let testNum = "123.5육7";
+
+            //Number 함수의 경우 숫자가 아닌 문자가 포함된 값이 들어온다면 Nan(Not a number) 발생.
+            let test17 = Number(testNum);
+            let test18 = parseInt(testNum);
+            let test19 = parseFloat(testNum);
+
+            area3.innerHTML += "test17 : " + test17 + "<br>";
+            area3.innerHTML += "test18 : " + test18 + "<br>";
+            area3.innerHTML += "test19 : " + test19 + "<br>";
+
+            //NaN(숫자가 아님)을 판별해주는 함수
+            //isNan(값) : 값이 NaN이면 true 아니면 false
+
+            area3.innerHTML += "isNaN 테스트(test17) : " + isNaN(test17) + "<br>"; //
+            area3.innerHTML += "isNaN 테스트(test18) : " + isNaN(test18) + "<br>"; //
+
+
+
+
+        }
+
+    </script>
+
+
+    
+</body>
+</html>

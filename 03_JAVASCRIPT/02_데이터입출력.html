@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 입력</title>
+</head>
+<body>
+    <h1>자바스크립트에서의 데이터 입출력</h1>
+
+    <!--
+      window : 자바스크립트 내장 객체로 브라우저 창이 열릴때마다 하나씩 만들어지는 객체
+               브라우저에 존재하는 모든 요소들의 최상위 객체이다.
+               모든곳에 적용되기 때문에 생략가능하다.
+               ex) window.alert() -> alert()으로 표기 가능
+         
+      document : 웹 문서마다 하나씩 만들어지는 객체로
+                 HTML 문서에 대한 정보를 가지고 있다.         
+    -->
+
+    <h2>1. 데이터를 출력하는 기본 구문</h2>
+    <p>
+        1)window.alert("알림창에 출력할 문구"); <br>
+        2)window.console.log('콘솔창에 출력할 문구'); <br>
+        3)document.write("문서화면에 출력할 문구"); <br>
+        4)선택한 요소.innerHTML/innerText = '해당 요소에 출력할 문구';
+
+    </p>
+
+    <h3>3)document.write('출력할 문구')</h3>
+    <button onclick="document.write('화면에 출력해보기')">화면출력</button>
+
+    <button onclick="mkTable();">테이블 출력</button>
+
+    <script>
+        //테이블 출력 버튼을 눌러 테이블을 화면에 출력해보기
+        function mkTable(){
+            var table ="<table border='1'>";
+                table +="<tr>";
+                table += "<td>"+1+"</td>";
+                table += "<td>안녕</td>";  
+                table += "<td>하세요</td>";
+                table += "</tr></table>";     
+
+                //작성된 테이블 문자열을 출력구문에 넣기 
+                document.write(table);
+        }
+    </script>
+
+    <h3>4)선택한 요소.innerHTML/innerText="해당요소에 출력할 문구"</h3>
+
+    <div class="area" id="div1">
+        자바스크립트에서 어떠한 요소(element)안의 값(content)을 가지고 온다거나 <br>
+        변경하고자 할 때 <b>innerHTML / innerText</b> 라는 속성에 접근하면 된다.
+    </div>
+
+    <button onclick="tagValue();">확인</button>
+
+    <script>
+        function tagValue() {
+            //특정 요소값을 가지고 온다거나 변경하고자 할때
+            //먼저 해당 요소객체를 가져와 변수에 담아놓고 처리하기
+
+            //아이디값으로 요소 추출
+            var divEl = document.getElementById("div1"); // div 요소 추출
+
+            console.log(divEl);
+            console.log(divEl.innerHTML);
+            console.log(divEl.innerText);
+
+            //아이디, 클래스 속성 접근
+            console.log(divEl.id);
+            console.log(divEl.className);
+
+            //선택한 요소 내에 있는 속성에 접근하려면 요소.속성명 으로 접근
+            //해당 속성에 접근하여 값을 확인할 수 있고 값을 변경할 수도 있다.
+            //대입연산자를 이용하여 값 변경해보기
+            //divEl.innerHTML = "<mark>innerHTML 값 변경해보기 </mark>";
+            divEl.innerText = "<mark>innerHTML 값 변경해보기 </mark>";
+
+            //innerHTML은 태그를 인식, innerText는 태그를 인식하지 않고 문자열로 처리됨.
+
+            //div요소의 onclick 속성에 함수 적용해보기
+            divEl.onclick=function(){
+                alert("div눌림");
+            }
+            //확인버튼을 한번 누르고나서야 익명함수가 적용된다. 
+
+
+        }
+
+        //함수 호출
+        //tagValue(); //버튼을 누르지 않아도 스크립트가 알아서 수행했기에 결과가 바로 나옴.
+    </script>
+
+    <hr>
+
+    <h2>2.데이터를 입력받는 기본 구문(변수에 기록 가능)</h2>
+
+    <p>
+        1) 변수 = window.confirm('질문내용'); <br>
+        2) 변수 = window.prompt('질문내용'); <br>
+        3) 변수 = 선택한요소.속성; <br>
+        4) 변수 = 선택한input요소.value; (제일 중요)
+    </p>
+
+    <h3>1)window.confirm('질문내용')</h3>
+
+    <p>
+        confirm 호출시 "질문내용" 과 확인/취소 버튼이 존재하는 알림창 발생<br>
+        확인 버튼 클릭시 true/ 취소 버튼 클릭시 false를 반환한다.
+    </p>
+
+    <div class="area" id="area2"></div>
+    <button onclick="confirmTest();">클릭</button>
+
+    <script>
+        function confirmTest(){
+            var result = window.confirm('이해가 되었다면 확인 아니면 취소'); // true or false
+
+            console.log(result); 
+
+            //반환된 결과값을 이용하여 조건처리 해보기
+            //if구문은 자바와 같음
+            //조건에 따라서 div영역에 다른 텍스트를 넣어보기
+
+            var divEl = document.getElementById("area2");
+
+            if(result) {
+                divEl.innerHTML = "<h3>이해가 되었어요!!</h3>";
+
+            } else {
+                divEl.innerHTML = "<h3>이해를 못해서 괴로워요</h3>";
+            }
+        }
+    </script>
+
+    <h3>2)window.prompt("질문내용")</h3>
+
+    <p>
+        prompt 호출시 질문내용과 입력할 수 있는 입력상자와 확인/취소 버튼이 보여지는 알림창 발생 <br>
+        -확인 버튼 클릭시 텍스트 상자에 입력되어 값이 변환 <br>
+        -취소 버튼 클릭시 null을 반환
+    </p>
+
+    <div class="area" id="area3"></div>
+    <button onclick="promptTest()">클릭</button>
+
+    <script>
+        function promptTest() {
+            //사용자가 입력한 값 또는 취소시 결과값을 반환받아 변수에 담고 출력해보기
+            //주말에 해야할 일
+            var thing = window.prompt("주말에 해야할 일 ?"); // scanner 같은 느낌?
+
+            //입력받은 정보를 이용하여 div에 출력해보기
+            var divEl3 = document.getElementById("area3");
+
+            divEl3.innerHTML = "<h5>이번 주말에 해야할일은 " + thing +"입니다.<h5>";
+        }
+    </script>
+
+    <br>
+
+    <button onclick="inputinsert();">숫자 입력</button>
+    <ul id="ulTest">
+
+    </ul>
+
+    <script>
+        //사용자에게 숫자를 prompt로 입력받고 입력받은 숫자만큼 li요소를 만들어서
+        //위에 있는 ul 요소안에 넣어주기
+        /*
+           *자바 for문 : for(int i=0; i<10; i++)
+           *자바스크립트 for문: for(var i=0; i<10; i++)
+           let도 가능 
+
+           참고하여 처리해보기
+
+        */
+
+        function inputinsert(){
+            
+            var num = window.prompt("숫자를 입력하세요.");
+            
+            var ul1 = document.getElementById("ulTest");
+
+            for(var i=0; i <num; i++) {
+                ul1.innerHTML += "<li>"+(i+1)+"</li>";
+            }
+
+            /*
+            var num = window.prompt("숫자 입력");
+
+            var str = "";
+
+            for(var i = 0; i<num; i++){
+              str+="<li>"+(i+1)+"</li>";
+            }
+
+            console.log(str);
+
+            //ul요소의 id를 이용하여 지정후 내부 속성에 li요소 넣기
+            document.getElementById("ulTest").innerHTML = str;
+            */
+        }
+    </script>
+
+    <h2>4)input요소.value</h2>
+
+    <form action="test">
+        아이디: <input type="text" name="userId" id="userId"> <br>
+        비밀번호: <input type="password" name="userPwd" id="userPwd"> <br>
+
+        <br>
+        <!--form 태그 내에 타입이 정해지지 않은 button 태그가 있다면
+            해당 버튼은 submit 동작을 수행한다.-->
+        <button type="button" onclick="inputTest();">회원가입</button>
+    </form>
+
+    <script>
+        function inputTest() {
+            //아이디와 비밀번호에 입력받은 값을 추출해보기
+            var inputId = document.getElementById("userId"); // input 요소 접근
+            var inputPwd = document.getElementById("userPwd"); // input 요소 접근
+
+
+            //해당 input 요소에서 입력된 값을 추출하려면 value 속성에 접근해야한다.
+
+            //value 속성에 값이 들어감. 
+
+            // console.log(inputId);
+            // console.dir(inputId);
+            // console.log(inputPwd);
+            // console.dir(inputPwd);
+
+            console.log("아이디 : ",inputId.value);
+            console.log("비밀번호 : ",inputPwd.value);
+
+            inputId.value='바뀌는값'; //속성에 접근하여 값을 대입하면 변경된다. 
+
+
+            //객체에 있는 값을 바꿔오냐 아니면 객체에서 갖고온 값을 가지고 다른값으로 바꿔오냐?
+
+            /*
+            var userId = document.getElementById("userId").value;
+            var userPwd = document.getElementById("userPwd").value;
+
+            userId = "변경한 아이디";
+            userPwd = "변경한 비밀번호";
+
+            위에서의 userId,userPwd와 아래에서의 userId,userPwd의 차이는?
+
+            객체를 직접적으로 접근해서 가지고온 값과 객체를 직접적으로 접근해서 값을 바꾸냐 이거의차이임.
+
+            즉, 가지고 온 값은 갖고 온거기만하고 바꾼건 객체 내부에 있는 필드값 자체를 바꿨다고 생각하면된다.
+
+            getter, setter 이용한 느낌 . 
+
+            console.log("확인 : ", userId,userPwd);
+            */
+        }
+    </script>
+
+    <h3>5)비밀번호 확인 연습</h3>
+
+    비밀번호 : <input type="password" name="" id="pa"> <br>
+    비밀번호 확인 : <input type="password" name="" id="pa1"> <br>
+
+    <br>
+    
+    <button onclick="identify1();">검증</button>
+
+    <script>
+        //비밀번호와 비밀번호 확인에 입력한 값이 같은지 확인하기
+        //버튼을 눌렀을때 비밀번호와 비밀번호 확인이 같다면
+        //비밀번호가 잘 입력되었습니다!
+        //같지 않다면 비밀번호와 확인이 일치하지 않습니다.
+        //라는 메시지를 alert으로 출력해보기
+        //id, 함수명 자유
+
+        function identify1() {
+            var userPwd = document.getElementById("pa").value; // 입력한 비밀번호
+
+            var userPwd1 = document.getElementById("pa1").value; // 확인 비밀번호 
+
+            if(userPwd==userPwd1) { //입력한 비밀번호와 확인 비밀번호가 일치한다면
+                window.alert("비밀번호가 잘 입력되었습니다!");
+            } else {
+                window.alert("비밀번호와 확인이 일치하지 않습니다.")
+            }
+
+        }
+
+
+    </script>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
