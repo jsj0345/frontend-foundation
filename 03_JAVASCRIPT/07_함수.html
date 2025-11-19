@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+
+    <style>
+        .area{
+            width: 500px;
+            height: 100px;
+            background-color: blanchedalmond;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수</h1>
+
+    <h3>onclick="test01();" : 선언적 함수</h3>
+
+    <pre>
+        function 함수명(매개변수,...) { -매개변수 생략가능
+
+            해당 함수 호출 시 실행할 코드;
+
+            return 결과값; (생략가능)
+        }
+    </pre>
+
+    <div id="area1" class="area"></div>
+    <button onclick="test01();">실행확인</button>
+
+    <script>
+        function test01(){
+            document.querySelector("#area1").innerHTML += "test 함수 수행"; 
+        }
+    </script>
+
+    <br>
+    <h3>익명함수</h3>
+    <pre>
+        function(매개변수,..){
+            실행코드; 
+        }
+    
+        특정 변수나 속성에 대입되는 함수 제시시 주로 사용(이벤트 핸들러 또는 변수)
+    </pre>
+
+    <div id="area2" class="area"></div>
+    <button id="btn">실행확인</button>
+
+    <script>
+        let btn = document.querySelector("#btn");
+
+        btn.onclick = function() { // onclick 이벤트 속성에 이벤트 핸들러(함수) 넣기 
+            document.querySelector("#area2").innerHTML += "이벤트 핸들러로 실행"; 
+        }
+
+    </script>
+
+    <hr>
+
+    <h2>함수의 매개변수</h2>
+
+    <!-- btn[onclick="test3();"]{실행확인}*8 -->
+     <button onclick="test3('안녕하세요');">실행확인</button>
+     <button onclick="test3(10);">실행확인</button>
+     <button onclick="test3([1,2,3]);">실행확인</button>
+     <button onclick="test3(true);">실행확인</button>
+     <br>
+     <button onclick="test3(prompt('점심메뉴 입력'));">실행확인</button>
+     <button onclick="test3('안녕하세요','반갑습니다');">실행확인</button>
+     <button onclick="test3(999,['밥',999,true],{name:'김유저',age:99});">실행확인</button>
+     <button onclick="test3();">실행확인</button>
+
+     <br><br>
+
+     <div id="area3" class="area"></div>
+
+     <script>
+        //매개변수에 자료형을 따로 지정하지 않고 받아줄 변수명만 작성 
+        function test3(value,value2,value3) { //매개변수를 여러개 지정해도 안써도 문제가 없음 value는 받아왔는데 value2는 안받아와도 단순히 undefined되고 끝남.
+            let area3 = document.querySelector("#area3");
+
+            //전달 받은 값 추가해보기
+            area3.innerHTML += value; 
+            console.log(value2);
+            console.log(value3);
+
+            //매개변수의 자료형이나 var/let/const와 같은 변수 선언을 하지 않고
+            //변수명만 작성하여 사용하며 매개변수를 정의하지 않았을때 전달값이 있어도
+            //매개변수가 정의되어있지만 전달값이 없어도 오류가 발생하지 않는다.
+            //매개변수가 정의되어있을때 전달값이 없이 매개변수를 접근하면
+            //undefined 반환
+            
+            
+
+        }
+     </script>
+
+     <br>
+
+     <h3>매개변수 관련 arguments 배열</h3>
+
+     <p>
+        함수 호출시 전달되는 값은 내부적으로 arguments 배열에 담긴다 <br>
+        arguments : 모든 함수마다 내부적으로 하나씩 존재하는 배열 
+     </p>
+
+     <button onclick="test04(10,'전달값',[1,2,3]);">확인</button>
+     <div class="area" id="area4"></div>
+
+     <script>
+        function test04() {
+            //arguments : 함수내에서 사용가능한 유사 배열 객체이고
+            //함수에 전달된 값을 포함한다. 함수가 호출될때 자동으로 생성되고
+            //배열처럼 인덱스,length를 활용할 수 있지만 배열은 아니기때문에
+            //배열 전용 메소드는 사용 불가하다. 유사 배열 객체 
+            console.log(arguments);
+
+            //반복문으로 각 요소 접근해보기
+            for(let i = 0; i < arguments.length; i++) {
+                document.querySelector("#area4").innerHTML += arguments[i] + "<br>"; 
+            }
+
+            //arguments.pop(); - 배열 메소드 사용불가 (유사배열)
+        }
+     </script>
+
+     <br>
+
+     <h3>매개변수 있는 함수에 this 관련 전달</h3>
+
+     <!-- btn[onclick="test05();"]*3 -->
+     
+     <!--함수 전달값으로 this를 넣어주면 해당 함수가 호출되는 위치의 요소객체가 전달된다.-->
+     <button onclick="test05(this);">버튼</button>
+     <button onclick="test05(this.id);" id="btn2">버튼</button>
+     <button onclick="test05(this.className);" class="btns">버튼</button>
+     <input type="text" onclick="test05(this.value)" value="값입니다.">
+
+     <script>
+        function test05(btn) {
+
+            //두번째 버튼을 먼저 누르면 el에 관한 정보는 없으니 undefined. 
+
+            let btn2 = document.querySelector("#btn2");
+
+            //전달받은 el(눌려진 버튼)
+            //el버튼에 내부 문자열을 버튼에서 눌림으로 바꾸기 
+            console.log(btn);
+            //console.log(btn2);
+
+            btn.innerHTML = "눌림";
+            //btn2.innerHTML = "눌림";
+
+        }
+     </script>
+
+     <hr>
+
+     <h2>함수의 리턴</h2>
+
+     <h3>일반적인 값 리턴</h3>
+     <button onclick="test06()">실행코드</button>
+
+     <div class="area" id="area6"></div>
+
+     <script>
+        //1~100사이의 랜덤값을 구해서 반환하는 함수 만들기
+        function ranNum() {
+            //랜덤값 추출
+            let ranNum = parseInt(Math.random()*100+1);
+
+            return ranNum; //반환값 리턴하기 
+        }
+
+        function test06(){
+            //정의해놓은 함수의 반환값을 이용하여 화면 출력해보기
+
+            document.querySelector("#area6").innerHTML += "랜덤값 : " + ranNum();
+        }
+     </script>
+
+     <br>
+
+     <h3>익명함수를 리턴하는 함수</h3>
+     이름 : <input type="text" name="userName">
+     <!-- 익명함수 리턴하는 함수 호출시 해당 함수 뒤에 ()를 추가해야함 -->
+     <button onclick="test07()();">확인</button> <!--()를 하나 더 추가해야함. 익명함수 리턴하는 함수 호출이여서. -->
+     <button onclick="test08();">확인</button> 
+
+     <script>
+        function test07() {
+            let userName = document.querySelector("input[name=userName]");
+
+            alert("테스트7");
+
+            return function(){
+                alert(userName.value+"님 안녕하세요.");
+            }
+
+        }
+
+        function test08() {
+            alert("확인");
+            return "test8";
+        }
+     </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+       .area{
+          border : 1px solid black;
+       }
+
+    </style>
+</head>
+<body>
+
+    <h1>객체배열</h1>
+    <h3>객체 배열을 이용한 다량의 데이터 관리</h3>
+
+    <button onclick="test1();">실행확인</button>
+
+    <div class="area" id="area1"></div>
+
+    <script>
+        function test1() {
+            let student1 = {
+                name : '짱구',
+                java : 100,
+                oracle : 89,
+                html : 40,
+                css : 50
+            };
+
+            let student2 = {name : '훈이', java:80,oracle:44,html:85,css:33};
+            let student3 = {name : '맹구', java:100,oracle:100,html:100,css:100};
+            let student4 = {name : '철수', java:66,oracle:77,html:80,css:66};
+            let student5 = {name : '유리', java:63,oracle:87,html:67,css:55};
+
+            //배열 생성
+            let students = [];
+
+            students.push(student1);
+            students.push(student2);
+            students.push(student3);
+            students.push(student4);
+            students.push(student5);
+
+            console.log(students);
+
+            //반복문을 이용하여 속성 추가하기
+            //javascript 속성 추가 (점수는 0)
+            //점수합계 메소드 점수 평균 메소드 추가해보기
+            //getSum(), getAvg() (모든점수) 
+            //div 영역에 이름 : XXX
+            //      점수합계 : XX점
+            //      점수평균 : XX점
+
+            for(let student of students) {
+                student.javascript = 0;
+                //점수합계 메소드
+                student.getSum = function() {
+                    return this.java + this.oracle + this.html + this.css + this.javascript;
+                };
+
+                //점수평균 메소드
+                student.getAvg = function() {
+                    return Math.round(this.getSum()/5);
+                }
+            }
+
+            console.log(students);
+
+            let area1 = document.querySelector("#area1");
+
+            for(let student of students) {
+                area1.innerHTML += "이름 : " + student.name + "<br>";
+                area1.innerHTML += "점수합계 : " + student.getSum() + "점<br>";
+                area1.innerHTML += "점수평균 : " + student.getAvg() + "점<br><hr>";
+
+            }
+        }
+
+
+    </script>
+
+    <h3>생성자 함수</h3>
+
+    <p>
+        new 키워드를 이용하여 객체를 생성할 수 있는 함수를 의미 <br>
+        함수명 제시시 첫글자 대문자로
+    </p>
+
+    <button onclick="test2();">실행확인</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        //new 연산자와 함께 함수 사용시 생성자 함수이다.
+        //자바에서 했던 매개변수 생성자와 유사
+        //생성자함수를 정의하고 사용해보기
+
+        //자바에서는 멤버변수를 선언하고나서 매개변수에 있는 값을 멤버변수에 넣는 반면..
+        //자바스크립트는 속성을 만들고 값을 초기화하는 과정이 동시에 일어남. 
+
+        //원하는 형태의 객체가 있다면 해당 속성들을 정의한 생성자 함수를 사용한다. 
+        //생성자 함수 정의
+            function Student(name,java,oracle,html,css,javascript) {
+
+                //전달받은 데이터로 속성에 값 추가하여 속성 정의하기
+                //생성될 객체 속성에 값을 대입해야되기 때문에 this 키워드 사용
+                this.name = name;
+                this.java = java;
+                this.oracle = oracle;
+                this.html = html;
+                this.css = css;
+                this.javascript = javascript; 
+                
+                //메소드 정의
+                this.getSum = function() {
+                    return this.oracle + this.java + this.html + this.css + this.javascript;
+                }
+
+                this.getAvg = function() {
+                    return Math.round(this.getSum()/5);
+                }
+
+                this.toString = function() {
+                    return "이름 : " + this.name + " / 총점 : " + this.getSum() + " / 평균 : " + this.getAvg() +"점";
+                }
+            }  
+
+            function test2() {
+                //위에 정의한 생성자 함수를 이용하여 객체를 생성해보기 
+                let student1 = new Student('짱구',100,90,80,70,50);
+                let student2 = new Student('맹구',90,90,90,90,90);
+                let student3 = new Student('훈이',80,50,60,70,90);
+
+                //객체 배열에 넣기
+                let students = [student1, student2, student3];
+
+                let area2 = document.querySelector("#area2");
+
+                for(let student of students) {
+                    area2.innerHTML += student + "<br>";
+                }
+
+            }
+
+    
+
+    </script>
+
+    <hr>
+
+    <h3>Date 내장 객체</h3>
+
+    <button onclick="test3();">실행확인</button>
+
+    <div class="area" id="area3"></div>
+
+    <script>
+        function test3() {
+            let area3 = document.querySelector("#area3");
+            let today = new Date();
+
+            area3.innerHTML += "Date : " + today + "<br>";
+
+            let date1 = new Date(2025,12,25);
+            area3.innerHTML += "Date(2025,12,25) : " + date1 + "<br>";
+            //월은 내부적으로 +1 되기 때문에 -1로 처리해야한다.
+            let date2 = new Date(2025,12-1,25,0,10,30);
+            area3.innerHTML += "Date(2025,12-1,25) : " + date2 + "<br>";
+
+            //년도
+            area3.innerHTML += "년도 : " + date2.getFullYear() + "<br>";
+            //월(+1 처리)
+            area3.innerHTML += "월 : " + (date2.getMonth()+1) + "<br>";
+            //일
+            area3.innerHTML += "일 : " + date2.getDate() + "<br>";
+            //시
+            area3.innerHTML += "시 : " + date2.getHours() + "<br>";
+            //분
+            area3.innerHTML += "분 : " + date2.getMinutes() + "<br>";
+            //초
+            area3.innerHTML += "초 : " + date2.getSeconds() + "<br>";
+
+            //getTime() : 1970년 1월 1일부터 현재까지 경과 시간 ms단위로 표현 
+            area3.innerHTML += "getTime : " + date2.getTime() + "<br>";
+
+        }
+    </script>
+
+    <h3>개강일로부터 오늘까지의 지난 날짜를 alert으로 출력해보기</h3>
+
+    개강일 <input type="date" id="startDate">
+    <button onclick="dayToDay();">날짜 계산</button>
+
+    <script>
+        function dayToDay() {
+            //getTime 메소드를 이용해서 "개강일로부터 xx일 지났습니다."를 띄워보기
+
+            let today = new Date();
+
+            let date2 = document.getElementById("startDate");
+
+            let start = new Date(date2.value);
+
+            let day = Math.round((today.getTime() - start.getTime()) / (24*60*60*1000)); // 개강 ~ 오늘 지나간 날. 
+            
+            alert("개강일로부터 " + Math.round(day) + "일 지났습니다.");
+        }
+    </script>
+
+
+
+
+    
+</body>
+</html>
