@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탐색메소드 - 자손</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        .wrap,.wrap * {
+            border: 1px solid black;
+            display: block;
+            margin: 15px;
+            padding: 5px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>탐색(순회) 메소드</h1>
+
+    <h3>
+        Descendants (자손) 메소드 : 기준이 되는 요소의 하위 요소들을 선택할 수 있는 메소드
+    </h3>
+
+    <!-- div.wrap>div>ul>li>span -->
+     <div class="wrap">
+        <div> 조상 div
+            <ul> 조부모 ul
+                <li> 부모 li
+                    <span>span(나)</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- div>p>span -->
+         <div> 조부모 div
+            <p> 부모 p
+                <span>span(나)</span>
+            </p>
+         </div>
+     </div>
+
+     <p>
+        <h4>-$("선택자").children()</h4>
+        선택된 요소의 모든 자손(바로 하위)요소들을 선택
+
+        <h4>-$("선택자").children("선택자")</h4>
+        선택된 요소의 모든 자손요소들 중에서 제시한 값과 일치하는 요소들만 선택
+
+        <h4>-$("선택자").find("선택자")</h4>
+        선택된 요소의 모든 후손요소들 중에서 제시한 값과 일치하는 요소들만 선택
+
+        <h4>-$("선택자").has("선택자")</h4>
+        선택된 요소의 모든 후손 요소들 중 제시한 요소가 있는 요소만 선택
+
+
+     </p>
+
+     <script> // 다 봐두기 
+        $(function(){
+            //부여할 스타일 객체로 만들어놓고 대입하기
+            let style1 = {color:'red', border:'2px solid red'};
+            let style2 = {color:'orange', border:'2px solid orange'};
+            let style3 = {color:'gold', border:'2px solid gold'};
+            let style4 = {color:'green', border:'2px solid green'};
+            let style5 = {color:'blue', border:'2px solid blue'};
+            let style6 = {color:'pink', border:'2px solid pink'};
+
+            //만들어 놓은 객체를 .css() 함수에 대입하여 적용시켜보기 
+            //children()
+            $(".wrap").children().css(style1); //wrap 클래스 영역 자손 요소들 선택 
+            console.log($(".wrap").children());
+            $(".wrap").children().children().css(style2); //wrap 클래스의 자손의 자손요소들 선택
+            console.log($(".wrap").children().children());
+
+            //children("선택자")
+            $(".wrap").children().children("ul").css(style3); //wrap클래스의 자손의 자손요소들중 ul태그 선택
+            console.log($(".wrap").children().children("ul"));
+
+            //find("선택자")
+            $(".wrap").find('li').css(style4);
+            console.log($(".wrap").find('li'));
+            $(".wrap").find('span').css(style5);
+
+            //has("선택자")
+            $(".wrap>div").has("li").css(style6); //wrap 자손 div중 li요소를 포함하고있는 div선택
+
+        });     
+     </script>
+    
+</body>
+</html>

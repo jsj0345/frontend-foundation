@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본선택자</title>
+    <!-- CDN 방식으로 jquery 라이브러리 불러오기-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <h1>기본 선택자</h1>
+    <h3>*아이디 선택자</h3>
+
+    <p>
+        특정 고유한 아이디값을 가진 요소 하나만을 선택하고자 할때
+    </p>
+
+    <h1 id="id1">ID1</h1>
+    <h1 id="id2">ID2</h1>
+
+    <script>
+        //DOM요소가 다 만들어진 이후에 동작하는 함수
+        $(document).ready(function(){
+            // 순수 자바스크립트 방식
+            // document.getElementById("아이디명")
+            // document.querySelector("#아이디명")
+
+            $('#id1').css('color','red');
+            $('#id2').css('color','blue');
+            $('#id2').html('변경해볼래요');
+
+            
+            //.html() : innerHTML 속성과 관련된 기능을 하는 메소드
+            
+        });
+
+        //수정뿐만 아니라 해당 속성에 담긴 값을 확인할 수 있다.
+
+        console.log($("#id1").css('color'));
+        console.log($("#id2").html());
+        console.log(document.getElementById("id1").style.color);
+        console.log(document.querySelector("#id2").innerHTML);
+
+
+    </script>
+
+    <h3>태그 선택자</h3>
+
+    <p>JAVA</p>
+    <p>ORACLE</p>
+    <p>JDBC</p>
+
+    <h5>HTML</h5>
+    <h5>CSS</h5>
+    <h5>JAVASCRIPT</h5>
+
+    <script>
+        $(function(){
+            //자바스크립트 방식
+            let pArr = document.getElementsByTagName("p");
+            console.log(pArr);
+            //pArr.style.color = 'blue'; // 각 요소에 인덱스를 이용하여 접근해야한다.
+
+            for(let item of pArr) {
+                item.style.color = 'blue'; 
+            }
+
+            //jquery방식
+            //순차적으로 접근할 필요 없이 요소를 잡고 함수를 사용하면 된다.
+
+            $("h5").css("color","green");
+
+            //여러 종류의 태그를 동시에 선택하고자 한다면 선택자에서 , 로 구분지어 나열
+            $("p,h5,#id1").css("backgroundColor","lightgray");
+
+            console.log($("p,h5,#id1"));
+        });
+    </script>
+
+    <h3>클래스 선택자</h3>
+
+    <p>
+        특정한 클래스 속성을 가진 요소들을 선택하고자 할때 사용
+    </p>
+
+    <h1 class="item">class1</h1>
+    <h1 class="item select">class2</h1>
+    <h1 class="item select">class3</h1>
+
+    <script>
+        $(function(){
+            //자바스크립트 방식
+            //document.querySelectAll(".클래스명")
+            //document.getElementsByClassName("클래스명")
+
+            //자바스크립트 방식을 이용하여 선택된 요소에 이벤트걸기
+
+            let items = document.querySelectorAll(".item");
+
+            console.log(items);
+
+            for(let item of items) {
+                item.onclick = function(){
+                    alert('눌림');
+                };
+            }
+
+            //jquery 방식
+            $(".select").css("backgroundColor",'beige');
+            //이벤트 핸들러 작성 : 이벤트
+            $(".select").click(function(){
+                alert('jquery로 등록한 이벤트핸들러');
+            });
+
+        });
+    </script>
+
+    <hr>
+    <h1>제이쿼리 선택자 활용</h1>
+    <p id="pid">ID 선택자</p>
+    <p class="test">클래스 선택자1</p>
+    <p class="test">클래스 선택자2</p>
+    <button id="btn1">클릭 버튼</button>
+
+    <script>
+        $(function(){
+            //태그 선택자를 이용하여 모든 p태그의 글자색을 파란색으로
+            $("p").css('color','blue');
+
+            //id 선택자를 이용하여 pid요소의 배경색을 회색으로 변경
+            $("#pid").css('backgroundColor','gray');
+
+            //클래스 선택자를 이용하여 test클래스의 요소들 글자 크기 20px로 변경
+            $(".test").css('font-size','20px');
+
+            //버튼 클릭시 모든 p요소의 텍스트를 "텍스트 변경완료"로 변경해보기
+            $("#btn1").click(function(){
+                $("p").html('<b>텍스트 변경완료</b>');
+                //$("p").html('<b>텍스트변경완료</b>'); // innerText 
+            });
+
+
+        });
+    </script>
+    
+</body>
+</html>
