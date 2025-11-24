@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window용 객체</title>
+
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 300px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>window용 객체</h1>
+    <p>
+        window 객체는 자바스크립트의 최상위 객체이며 BOM과 DOM으로 나뉜다 <br>
+        -BOM (Browser Object Model) : location객체, screen객체, navigation 객체, history 객체 <br>
+        -DOM (Document Object Model) : document객체 
+    </p>
+
+    <h4>window.open("url","창이름","창특성")</h4>
+
+    <button onclick="test1()">네이버</button>
+
+    <script>
+        function test1() {
+            //창이름을 설정하면 해당 창이 열려있을때 새 창을 열지 않고 기존 창을 새로 고침한다.
+            //window.open("https://www.naver.com", '네이버창'); //이름 한번 지워보고 해보기
+            //window.open(); //url없으면 새탭 열림
+            window.open("https://www.google.com",'구글','width=500,height=500'); 
+        }
+    </script>
+
+    <br>
+
+    <h3>window 객체의 timer 관련 메소드</h3>
+
+    <h4>window.setTimeout(함수,ms)</h4>
+
+    <button onclick="test2();">확인</button>
+    
+    <script>
+        function test2() {
+            //버튼이 눌리고 3초뒤에 alert창이 뜨도록 설정해보기
+
+            /*
+            setTimeout(function(){
+                alert("알림!!");
+
+            },3000);
+            */
+
+            //새로 열린 창의 window객체를 반환받아 다뤄보기
+
+            let newWindow = window.open();
+
+            newWindow.alert('새창에서 알림');
+
+            setTimeout(function(){
+                newWindow.close(); // 열려있는 창 닫아주기
+            },3000);
+            
+        }
+    </script>
+
+    <h4>window.setInterval(함수,ms)</h4>
+
+    <button onclick="test3();">확인</button>
+
+    <div class="area" id="area1"></div>
+
+    <script>
+        function test3() {
+            let area1 = document.querySelector("#area1");
+
+            /*
+            setInterval(function(){
+
+                area1.innerHTML += "ㅋ";
+
+            },10000);
+            */
+
+            //Date 객체를 이용하여 현재 시간이 1초씩 증가되는 모습 구현해보기
+            // ex) 현재시간 09 : 18 : 05 
+            // area1 div 에 표시하기
+
+            
+            //이거 이따가 코드 보기 (test3와 setInterval은 독립적인 관계)
+            //왜냐면 버튼을 한번 눌렀으면 1초후에 시간 보여주고 끝나야함.
+            //근데 계속 돌아감. 독립적임. 
+            //비동기적인 코드(독립적인 코드)
+            setInterval(function(){
+
+                let now = new Date();
+                let hour = now.getHours();
+                let minute = now.getMinutes();
+                let second = now.getSeconds();
+
+                if(hour<=9) {
+                    hour = '0' + hour;
+                }
+
+                if(minute<=9) {
+                    minute = '0' + minute;
+                }
+
+                if(second<=9) {
+                    second = '0' + second;
+                }
+
+                area1.innerHTML = hour + " : " + minute + " : " + second;
+
+
+
+            },1000);
+        }
+    </script>
+
+    <hr>
+
+    <h1>BOM(Browser Object Model)</h1>
+
+    <h3>location 객체</h3>
+
+    <p>브라우저 주소창과 관련된 객체</p>
+
+    <button onclick="console.log(location);">확인</button>
+
+    <!-- a태그 - 요청 url을 작성할 수 있는 href 속성을 제공 -->
+    <a href="https://www.naver.com">네이버로</a>
+
+    <br><br>
+
+    <!--location.href='경로' : 해당 경로로 이동시키는 동작-->
+    <button onclick="location.href='https://www.google.com'">구글로 이동</button>
+    <!--location 속성에 href를 보면된다. -->
+
+    <br><br>
+
+    <!--label요소에 클릭 이벤트 걸어서 이동시켜보기-->
+    <label onclick="location.href='https://www.daum.net'">다음으로</label>
+
+    <br><br>
+
+    <button onclick="location.reload()">새로고침</button>
+
+    <br><br>
+
+    <!--replace는 뒤로가기 불가능-->
+    <button onclick="location.replace('https://www.google.com');">구글로 이동</button>
+
+    <h3>screen 객체</h3>
+
+    <!--화면에 대한 정보 객체 (화면 크기에 따라 조절 가능한 속성)-->
+    <button onclick="console.log(screen);">screen 객체 확인</button>
+
+    <h3>navigator객체</h3>
+
+    <!--브라우저, 운영체제에 관한 정보객체-->
+    <button onclick="console.log(navigator);">navigator 객체 확인</button>
+
+    <h3>history객체</h3>
+    
+    <!--방문 기록 정보 객체-->
+    <button onclick="console.log(history);">history 객체 확인</button>
+
+    <button onclick="history.back(1);">뒤로가기</button>
+
+    <button onclick="history.forward();">앞으로가기</button>
+
+    <!-- go(n값) 에서 n 값이 양수이면 앞으로 음수이면 뒤로-->
+    <button onclick="history.go(-1);">앞 또는 뒤로</button>
+
+    <h3>DOM (Document Object Model)</h3>
+
+    <p>
+        HTML에 있는 각각의 태그들을 노드(Node)라고 한다. <br>
+        -요소노드(Element Node) : 태그 자체를 의미 <br>
+        -텍스트노드(Text Node) : 태그 내에 기록되는 내용 <br>
+
+        텍스트 노드가 존재하는 요소 (시작태그와 종료태그가 한쌍으로 이루어지는 태그) <br>
+        텍스트 노드가 존재하지 않는 요소 (단일태그)
+    </p>
+
+    <h3>노드 생성과 관련된 메소드</h3>
+    <h4>텍스트 노드가 존재하는 노드 생성 (시작태그 + 종료태그)</h4>
+
+    <button onclick="test4();">실행확인</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        function test4() {
+            //동적으로 요소 만드는 방법 1 : 문자열로 생성
+            let area2 = document.querySelector("#area2");
+
+            //area2.innerHTML = "<h5>안녕하세요</h5>";
+
+            //동적으로 요소 만드는 방법 2 : 제공되는 메소드(함수)를 이용하여 만드는 방법
+            //document에서 제공하는 메소드
+            //1)elementNode 객체 생성 : document.createElement("태그명")
+            //2)textNode 객체 생성 : document.createTextNode("문구")
+
+            //1)elementNode
+            let elNode = document.createElement("h5");
+
+            //2)textNode
+            let textNode = document.createTextNode("안녕하십니까");
+
+            console.log(elNode, textNode); 
+
+            //두개의 노드를 하나로 연결시켜주기 (요소노드 안에 텍스트노드 추가하기)
+            //요소노드.appendChild(텍스트노드)
+            elNode.appendChild(textNode);
+
+            console.log(elNode);
+
+            //div에 만들어준 h5태그 넣어보기
+
+            //innerHTML 속성에 넣으면 elNode는 객체(object)이기 때문에 넣어줄 수 없다 (텍스트만 가능)
+            //area2.innerHTML += elNode; 
+            //때문에 넣고자하는 요소에 요소객체를 넣을땐 하위 요소로 추가하는 방식을 이용한다.
+            //div하위 요소로 추가하기
+            area2.appendChild(elNode); // 자식요소로 추가하기 
+
+        }
+    </script>
+
+    <h4>텍스트 노드가 존재하지 않는 노드 생성(단일태그)</h4>
+
+    <button onclick="test5();">실행확인</button>
+
+    <div class="area" id="area3"></div>
+
+    <script>
+        function test5() {
+            //이미지 태그 생성
+            let img = document.createElement("img");
+
+            console.log(img);
+            //만들어준 태그 요소에 속성들 채워주기
+            img.src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA5MTJfMTEz%2FMDAxNzU3NjgxMjExMTQ3.qv10g8Od3JCjDYSM8Ff-mF4fvEis6bP9qy9qa4lcv2cg.rvPFFfFK9zlrMuiOQh631k9RLLaHMwbM99QKmLlWHtMg.PNG%2F%25C8%25AD%25B8%25E9_%25C4%25B8%25C3%25B3_2025-09-12_214550.png&type=a340";
+            img.width = "300";
+            img.height = "300";
+
+            //div요소 자식요소로 추가
+            document.querySelector("#area3").appendChild(img);
+        }
+    </script>
+
+    <br>
+
+    <h4>노드 삭제</h4>
+    <button onclick="test6();">삭제</button>
+
+    <script>
+        function test6() {
+            //지우고자 하는 요소 객체.remove();
+            //firstChild : 첫번째 자식요소 / lastChild : 마지막 자식요소 / nextSibling : 바로 다음요소
+            //위 선택시 텍스트 노드도 선택가능
+
+            //firstElementChild : 첫번째 자식요소/ lastElementChild : 마지막 자식요소(Element요소만 선택)
+
+            //첫번째 자식요소 확인
+            //console.log(document.querySelector("#area3").firstChild);
+
+            //마지막 자식요소 확인
+            //console.log(document.querySelector("#area3").lastChild);
+
+            //자식요소를 전부 확인하고 싶을때 : children
+            //console.log(document.querySelector("#area3").children);
+
+            //마지막 자식요소 삭제해보기
+            document.querySelector("#area3").lastChild.remove();
+
+        }
+    </script>
+
+    <h3>요소 생성 및 선택 정리</h3>
+
+    <div id="selectTest" style="border: 1px solid black;">
+        <span>div요소의 자식 element 요소</span>
+        div요소의 자식 텍스트요소
+    </div>
+    div옆에 있는 텍스트요소(노드)
+    <label>div옆에 있는 label element요소</label>
+    <div id="elNode">
+
+    </div>
+
+    <script>
+        let divEl = document.querySelector("#selectTest");
+
+        divEl.addEventListener("click",function(){
+            //문서에 있는 요소 추출과 요소 생성 확인
+            let elNode = document.querySelector("#elNode"); //추출
+            let createEl = document.createElement("div"); //생성
+            //텍스트 노드 생성
+            let createTextNode = document.createTextNode("텍스트노드생성");
+
+            //확인
+            console.log(elNode);
+            console.log(createEl);
+
+            //타입 확인 (typeof) - object
+            console.log(typeof elNode);
+            console.log(typeof createEl);
+            console.log(typeof createTextNode);
+
+            //생성된 요소에 속성 접근
+            elNode.innerHTML = "확인";
+            createEl.innerHTML = "생성한 노드에 속성접근";
+
+            console.log("============");
+            //firstChild와 firstElementChild 차이
+            console.log(divEl.firstChild); // 개발자도구 Elements 탭에서는 공백 텍스트노드를 시각적으로 숨긴다.
+            console.log(divEl.firstElementChild);
+
+            /*
+            #selectTest 
+            [0] TextNode("\n    ")                     ← 첫 번째 자식
+            [1] ElementNode <span>...</span>           ← 두 번째 자식(첫번째 엘리먼트)
+            [2] TextNode("\n    ")                     ← 세 번째 자식
+            [3] TextNode("div요소의 자식 텍스트요소") ← 네 번째 자식
+            [4] TextNode("\n")                         ← 다섯 번째 자식 (맨 마지막 엔터)
+
+            */
+
+            console.log(divEl.lastChild);
+            console.log(divEl.lastElementChild);
+
+            /*
+            그럼 nextsibling은 단순히 div태그 옆에있으니까 텍스트 노드를 추출한거고 
+            nextElementSibling 이건 div태그 옆에있는 요소의 텍스트노드니까 
+            div 옆에 있는 label element요소다. (자식이랑 관련이 아예없다. )
+            */ 
+            console.log(divEl.nextSibling);
+            console.log(divEl.nextElementSibling);
+        });
+    </script>
+
+    <h3>append / appendChild 및 요소 추가 구문</h3>
+
+    <div class="area" id="area4"></div>
+
+
+    <button onclick="test7();">요소 추가</button>
+    <button onclick="test8();">prepend</button>
+    <button onclick="test9();">before</button>
+    <button onclick="test10();">after</button>
+
+    <script>
+        let area4 = document.querySelector("#area4");
+        
+        function test7(){
+
+            let el1 = "<h5>안녕하세요</h5>";
+            let el2 = document.createElement("div");
+            let str = "반갑습니다."
+            let textNode = document.createTextNode("반갑습니다.");
+            el2.style.width = '100px';
+            el2.style.height = '100px';
+            el2.style.backgroundColor = 'skyblue';
+            //append로 추가(문자열가능,여러개가능-구형 ie브라우저에서는 사용 x es6문법)
+            //area4.append(el1);
+            //area4.append(el2);
+            //area4.append(el1,el2,str); //한번에 여러개도 추가 가능(문자열도 가능)
+
+            //appendChild(전통방식)-문자열 추가불가 node요소만 추가가능,한번에 하나씩
+            //구형 ie 브라우저에서도 동작
+            //area4.appendChild(el1); //문자열 불가
+            //area4.appendChild(el2);//node요소 가능
+            //area4.appendChild(str);
+            //area4.appendChild(textNode);//node 가능
+            area4.appendChild(el2,textNode);//여러개 불가
+
+
+            //어쨌든 append는 하위 요소중 마지막 하위요소 뒤에 추가하는것. 
+
+            //1.append/appendChild -하위요소 마지막에 추가
+            //2.prepend - 하위요소 앞에 추가
+        }
+
+        function test8(){
+            //prepend - 하위요소 맨앞에 추가
+            area4.prepend("<h5>추가됨</h5>");
+            area4.prepend(document.createElement("h5").appendChild(document.createTextNode("추가됨")));
+
+            //여기서 document.createElement("h5")로 먼저 태그를 만들고 (요소 노드를 만듬)
+            //그리고 태그를 만든 이후에 텍스트 노드를 appendChild해서 
+            //태그에 텍스트 노드를 추가함
+            //그런데 리턴값은 텍스트 노드임.
+
+        }
+
+        function test9(){
+            //before - 해당 요소 앞에(동위레벨)
+            area4.before("확인");
+        }
+        
+        function test10(){
+            //after - 해당 요소 뒤에 (동위레벨)
+            area4.after("확인");
+        }
+
+    </script>
+
+
+    <h3>동적으로 이미지 추가해보기</h3>
+
+    <div>
+        <input type="text" id="imgUrl" placeholder="이미지 url입력">
+        <button onclick="addImg();">이미지 추가</button>
+        <button onclick="removeAll();">전체 삭제</button>
+    </div>
+
+    <div id="imgArea"></div>
+
+    <script>
+        //input에 작성한 url대로 이미지를 추가할 수 있는 구문 작성해보기 
+        //이미지 추가 버튼을 누르면 해당 url로 된 이미지를 div영역에 추가해보기
+        //전체삭제 버튼을 누르면 들어있는 이미지들을 모두 지워보세요
+        function addImg(){
+            let inputUrl = document.querySelector("#imgUrl");
+            let img = document.createElement("img");
+            img.src = inputUrl.value;
+            img.width = 200;
+            img.height = 200;
+
+            document.querySelector("#imgArea").append(img);
+            
+            inputUrl.value = "";
+
+        }
+        function removeAll(){
+            let imgArea = document.querySelector("#imgArea");
+
+            console.log(imgArea.children);
+            let count = imgArea.children.length;
+
+            // for(let i=0; i<count; i++){
+            //     imgArea.lastElementChild.remove();
+            // }
+
+            imgArea.innerHTML="";
+            //imgArea.children.remove();
+        }
+
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+    
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+    
+</body>
+</html>
